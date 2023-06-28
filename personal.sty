@@ -1,0 +1,59 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{personal}
+
+\usepackage{amsmath}
+\usepackage{xparse}
+\usepackage{mathrsfs}
+
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\inte}{int}
+
+% MAT024
+\newcommand{\crossprod}[6]{\begin{vmatrix} \hat{i} & \hat{j} & \hat{k}\\ #1 & #2 & #3\\ #4 & #5 & #6\end{vmatrix}}
+\newcommand{\curl}[3]{\crossprod{\partial_x}{\partial_y}{\partial_z}{#1}{#2}{#3}}
+
+\newcommand{\qst}{\mathbb{Q} [\sqrt{2}]}
+\newcommand{\sqt}{\sqrt{2}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\iso}{\cong}
+\newcommand{\dsum}{\oplus}
+\newcommand{\xn}{\{x_n\}_{n \in \mathbb{N}}}
+\newcommand{\xnj}{\{x_{n_j}\}_{j \in \mathbb{N}}}
+\newcommand{\dual}[1]{#1^{\star}}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+\newcommand{\infnorm}[1][\cdot]{||#1||_{\infty}}
+\newcommand{\ellb}{\overline{\ell}}
+
+\newcommand{\front}{\partial}
+\newcommand{\closure}[1]{\overline{#1}}
+
+% Topologia
+\newcommand{\topo}{\mathscr{T}}
+\newcommand{\Ne}{\mathcal{N}}
+\newcommand{\Nc}{\mathcal{N}_c}
+\newcommand{\Na}{\mathcal{N}_a}
+\newcommand{\F}{\mathcal{F}}
+
+\renewcommand{\P}{\mathbb{P} [x]}
+\renewcommand{\Im}{\Ima}
+\renewcommand{\L}{\mathcal{l}}
+\renewcommand{\phi}{\varphi}
+
+\newcommand\restr[3]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2}^{#3} % this is the delimiter
+  }}
+
+
+\NewDocumentCommand{\evalat}{sO{\big}mm}{%
+  \IfBooleanTF{#1}
+   {\mleft. #3 \mright|_{#4}}
+   {#3#2|_{#4}}%
+}

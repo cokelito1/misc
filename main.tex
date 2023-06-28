@@ -1,0 +1,194 @@
+\documentclass{article}
+
+\usepackage{personal}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{chngcntr}
+\usepackage{mathtools}
+
+\title{Pura mierda}
+\author{Jorge Eduardo Bravo Soto}
+\date{\today}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problema}
+\counterwithin*{problem}{subsection}
+
+\newenvironment{solution}{\begin{proof}[Solucion]}{\end{proof}}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{MAT024}
+\subsection{Teorema de Stokes}
+\begin{problem}
+Usando el teorema de Stokes, calcular la integral de linea $\oint_{C} x^{2}y^{3} dx + dy + z dz$ donde $C$ es la curva $x^{2} + y^{2} = R^{2}, z = 0$ con $R > 0$, recorrida en sentido antihorario
+\end{problem}
+\begin{solution}
+  Notemos que la curva $C$ es cerrada, simple y suave. Esta curva encierra a la superficie $S: x^{2} + y^{2} \leq R^{2}, z = 0$ entonces por el teorema de Stokes tenemos que
+  \begin{equation*}
+    \iint_{S} \nabla \times F dS = \oint_{C} F dr
+  \end{equation*}
+  Calculemos $\nabla \times F$
+  \begin{equation*}
+    \nabla \times F = \curl{x^{2}y^{3}}{1}{z}
+  \end{equation*}
+
+  Consideremos la siguiente $\mathcal{C}^{\infty}$ parametrizacion de $S$
+  \begin{gather*}
+    \phi : [0, 2\pi] \times [0, R] \to \R^{3}\\
+    (\theta, r) \mapsto (r \cos \theta, r \sin \theta, 0)
+  \end{gather*}
+
+  Donde tenemos que
+  \begin{equation*}
+    \hat{n} = \phi_{\theta} \times \phi_{r}
+  \end{equation*}
+
+  \begin{gather*}
+    \phi_{\theta} = (-r \sin \theta, r \cos \theta, 0)\\
+    \phi_{r} = (\cos \theta, \sin \theta, 0)
+  \end{gather*}
+
+  Por lo tanto el vector normal es
+  \begin{equation*}
+    \hat{n} = \crossprod{-r \sin \theta}{r \cos \theta}{0}{\cos \theta}{\sin \theta}{0} = (0, 0, -r)
+  \end{equation*}
+
+  Por lo tanto tenemos que
+  \begin{equation*}
+    \oint_{C} F \cdot dr = \iint_{D} (0, 0, 3r^{2}\cos^{2}(\theta) r^{2} \sin^{2}(\theta)) \cdot (0, 0, -r) dA
+  \end{equation*}
+
+  Calculemos la integral, donde el dominio es el dominio de la parametrizacion entonces
+  \begin{align*}
+    \int_{0}^{2\pi}\int_{0}^{R} -3r^{5}\cos^{2}(\theta)\sin^{2}(\theta) drd\theta &= -\frac{R^{6}}{2} \int_{0}^{2\pi}\cos^{2}(\theta)\sin^{2}(\theta) d\theta\\
+                                                                                  &= -\frac{R^{6}}{2} \int_{0}^{2\pi} \cos^{2}(\theta)(1 - \cos^{2} \theta) d\theta\\
+                                                                                  &= -\frac{R^{6}}{2} (\pi - \int_{0}^{2\pi} \cos^{4} \theta d \theta)\\
+    &= -\frac{R^{6}\pi}{8}
+  \end{align*}
+\end{solution}
+
+\begin{problem}
+Calcule $\oint_{C} x \sin x - 2y^{2} dx + y \cos y - 2z dy + \tan z - 2x dz$ donde $C$ es la interseccion de $4x^{2} + 5y^{2} + z^{2} = 36$ con $z = 2y$
+\end{problem}
+\begin{solution}
+  Notemos que $C$ es una curva cerrada, simple y suave. Podemos ocupar el teorema de Stokes por lo
+  tanto
+  \begin{equation*}
+    \oint_{C} F dr = \iint_{S} (\nabla \times F) dS
+  \end{equation*}
+
+  Calculemos el rotor
+  \begin{equation*}
+    \nabla \times F = \curl{x \sin x - 2y^{2}}{y \cos y - 2z}{\tan z - 2x} = (2, 2, 4y)
+  \end{equation*}
+
+  Consideremos la siguiente parametrizacion, con las variaciones por determinar
+  \begin{equation*}
+    \phi(x, y) = (x, y, 2y)
+  \end{equation*}
+
+  donde sabemos que la normal es
+  \begin{equation*}
+    \hat{n} = (-f_{x}, -f_{y}, 1) = (0, -2, 1)
+  \end{equation*}
+
+  Por lo tanto
+  \begin{equation*}
+    \iint_{S} (\nabla \times F) \cdot \hat{n} dS = \iint_{D} -4 + 4y dA
+  \end{equation*}
+
+  Intersectando las 2 superficies obtenemos que
+  \begin{equation*}
+    4x^{2} + 9y^{2} \leq 36
+  \end{equation*}
+
+  Con el siguiente cambio de coordenadas se tiene que
+  \begin{gather*}
+    x(r, \theta) = 3 r \cos(\theta)\\
+    y(r, \theta) = 2 r \sin(\theta)
+  \end{gather*}
+  con $r \in [0, 1], \theta \in [0, 2\pi]$
+
+  y el jacobiano es
+  \begin{equation*}
+    J = \begin{vmatrix}
+      3 \cos(\theta) & -3r\sin(\theta)\\
+      2 \sin(\theta) & 2r \cos(\theta)
+    \end{vmatrix} = 6r
+  \end{equation*}
+
+  Por el teorema de cambio de coordenadas
+  \begin{equation*}
+    \iint_{D} -4 + 4y dA = \int_{0}^{2\pi}\int_{0}^{1} (-4 + 8r \sin\theta)6r dr d\theta = -24\pi
+  \end{equation*}
+
+\end{solution}
+
+\subsection{Teorema de la divergencia}
+\begin{problem}
+  Usando el teorema de la divergencia calcule $\iint_{S} F \cdot \hat{n} dS$ donde $S$ es la superficie lateral
+  del tronco del cono $z = \sqrt{x^{2} + y^{2}}$ limitado por los planos $z = 1$ y $z = 4$ y
+  $F(x, y, z) = (x^{2} + 2z, y^{2} + z^{2}, 1)$ y $\hat{n}$ es la normal exterior.
+\end{problem}
+\begin{solution}
+  Consideremos la siguiente superficie $S^{\star} = S \cup S^{T_{1}} \cup S^{T_{2}}$ donde tenemos que
+  \begin{gather*}
+    S^{T_{1}}: x^{2} + y^{2} \leq 16, z = 4\\
+    S^{T_{2}}: x^{2} + y^{2} \leq 1, z = 1
+  \end{gather*}
+
+  Dado que $S^{\star}$ es una superficie cerrada, podemos ocupar el teorema de Gauss el cual dice
+  \begin{equation*}
+    \iint_{S^{\star}} F \cdot \hat{n} dS = \iiint_{V} \nabla \cdot F dV
+  \end{equation*}
+
+  Calculemos la divergencia
+  \begin{equation*}
+    \nabla \cdot F = 2x + 2y
+  \end{equation*}
+
+  Calculemos la integral. Calculemos las variaciones en las coordenadas cilindricas
+  \begin{gather*}
+    0 \leq r \leq z\\
+    1 \leq z \leq 4\\
+    0 \leq \theta \leq 2\pi
+  \end{gather*}
+  Y sabemos que el jacobiano de las cilindricas es $r$. Calculemos la integral
+  \begin{equation*}
+    \iiint_{V} \nabla \cdot F dV = \int_{0}^{2\pi}\int_{1}^{4}\int_{0}^{z} (2r \cos \theta + 2r \sin \theta) r dr dz d \theta = 0
+  \end{equation*}
+
+  Por el teorema de Gauss entonces tenemos que
+  \begin{equation*}
+    \iint_{S} F \cdot \hat{n} dS + \iint_{S^{T_{1}}} F \cdot \hat{n} dS + \iint_{S^{T_{2}}} F \cdot \hat{n} dS = 0
+  \end{equation*}
+
+  Calculemos la segunda integral.
+  \begin{equation*}
+    \iint_{S^{T_{1}}} F \cdot \hat{n} dS = \int_{0}^{2\pi}\int_{0}^{1} -r dr d\theta = -\pi
+  \end{equation*}
+
+  Calculemos la tercera integral.
+  \begin{equation*}
+    \iint_{S^{T_{2}}} F \cdot \hat{n} dS = \int_{0}^{2\pi}\int_{0}^{4} r dr d \theta = 16\pi
+  \end{equation*}
+
+  Concluyendo asi que
+  \begin{equation*}
+    \iint_{S} F \cdot \hat{n} dS = -15\pi
+  \end{equation*}
+\end{solution}
+
+\subsection{EDP}
+
+\section{MAT225}
+\subsection{Topologia}
+
+\section{MAT210}
+\subsection{Teorema Espectral}
+
+\end{document}

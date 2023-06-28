@@ -1,0 +1,7 @@
+*.log
+*.pdf
+/.auctex-auto/
+*.aux
+*.toc
+/main.synctex.gz
+/_region_.tex
