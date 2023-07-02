@@ -1,0 +1,36 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Topologia}
+\begin{problem}
+  Sea $(X, \topo)$ un espacio topologico tal que $B \subset X$ sea un subconjunto denso en $X$. Si
+  $A$ es un conjunto denso en $(B, \topo_{B})$, donde $\topo_{B}$ es la topologia inducida de $X$ en $B$, demostrar que $A$ es denso en $(X, \topo)$
+\end{problem}
+\begin{solution}
+  Sea $\theta \in \topo, \theta \neq \emptyset$, dado que $B$ es denso en $X$ tenemos que
+  \begin{equation}
+    \label{eqn_fst1}
+    \theta \cap B \neq \emptyset
+  \end{equation}
+  Pero sabemos que $\theta \cap B \in \topo_{B}$ y de (\ref{eqn_fst1}) sabemos que es no vacio, por lo tanto dado que $A$ es denso en $(B, \topo_{B})$ tenemos que
+  \begin{equation*}
+    (\theta \cap B) \cap A \neq \emptyset
+  \end{equation*}
+
+  Pero $\theta \cap B \cap A \subset \theta \cap A$, por lo tanto $\theta \cap A \neq \emptyset$.
+  Lo que significa que $A$ es denso en $(X, \topo)$
+\end{solution}
+
+\begin{problem}
+  Sea $f : (X, \topo) \to Y$, definamos $\topo_{f, Y} = \{\theta | \theta \subset Y, f^{-1}(\theta) \in \topo\}$
+  \begin{enumerate}
+    \item Demuestre que $\topo_{f, Y}$ es una topologia en $Y$.
+    \item Demuestre que $f: (X, \topo) \to (Y, \topo_{f, Y})$ es continua.
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  Notemos que $Y \in \topo_{f, Y}$ pues $X \in \topo$ y $f^{-1}(Y) = X$, analogamente $\emptyset \in \topo_{f, Y}$, pues $\emptyset \in \topo$ y $f^{-1}(\emptyset) = \emptyset$.
+\end{solution}
+
+\end{document}

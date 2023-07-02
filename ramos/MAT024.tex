@@ -1,0 +1,616 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Teorema de Stokes}
+\begin{problem}
+Usando el teorema de Stokes, calcular la integral de linea $\oint_{C} x^{2}y^{3} dx + dy + z dz$ donde $C$ es la curva $x^{2} + y^{2} = R^{2}, z = 0$ con $R > 0$, recorrida en sentido antihorario
+\end{problem}
+\begin{solution}
+  Notemos que la curva $C$ es cerrada, simple y suave. Esta curva encierra a la superficie $S: x^{2} + y^{2} \leq R^{2}, z = 0$ entonces por el teorema de Stokes tenemos que
+  \begin{equation*}
+    \iint_{S} \nabla \times F dS = \oint_{C} F dr
+  \end{equation*}
+  Calculemos $\nabla \times F$
+  \begin{equation*}
+    \nabla \times F = \curl{x^{2}y^{3}}{1}{z}
+  \end{equation*}
+
+  Consideremos la siguiente $\mathcal{C}^{\infty}$ parametrizacion de $S$
+  \begin{gather*}
+    \phi : [0, 2\pi] \times [0, R] \to \R^{3}\\
+    (\theta, r) \mapsto (r \cos \theta, r \sin \theta, 0)
+  \end{gather*}
+
+  Donde tenemos que
+  \begin{equation*}
+    \hat{n} = \phi_{\theta} \times \phi_{r}
+  \end{equation*}
+
+  \begin{gather*}
+    \phi_{\theta} = (-r \sin \theta, r \cos \theta, 0)\\
+    \phi_{r} = (\cos \theta, \sin \theta, 0)
+  \end{gather*}
+
+  Por lo tanto el vector normal es
+  \begin{equation*}
+    \hat{n} = \crossprod{-r \sin \theta}{r \cos \theta}{0}{\cos \theta}{\sin \theta}{0} = (0, 0, -r)
+  \end{equation*}
+
+  Por lo tanto tenemos que
+  \begin{equation*}
+    \oint_{C} F \cdot dr = \iint_{D} (0, 0, 3r^{2}\cos^{2}(\theta) r^{2} \sin^{2}(\theta)) \cdot (0, 0, -r) dA
+  \end{equation*}
+
+  Calculemos la integral, donde el dominio es el dominio de la parametrizacion entonces
+  \begin{align*}
+    \int_{0}^{2\pi}\int_{0}^{R} -3r^{5}\cos^{2}(\theta)\sin^{2}(\theta) drd\theta &= -\frac{R^{6}}{2} \int_{0}^{2\pi}\cos^{2}(\theta)\sin^{2}(\theta) d\theta\\
+                                                                                  &= -\frac{R^{6}}{2} \int_{0}^{2\pi} \cos^{2}(\theta)(1 - \cos^{2} \theta) d\theta\\
+                                                                                  &= -\frac{R^{6}}{2} (\pi - \int_{0}^{2\pi} \cos^{4} \theta d \theta)\\
+    &= -\frac{R^{6}\pi}{8}
+  \end{align*}
+\end{solution}
+
+\begin{problem}
+Calcule $\oint_{C} x \sin x - 2y^{2} dx + y \cos y - 2z dy + \tan z - 2x dz$ donde $C$ es la interseccion de $4x^{2} + 5y^{2} + z^{2} = 36$ con $z = 2y$
+\end{problem}
+\begin{solution}
+  Notemos que $C$ es una curva cerrada, simple y suave. Podemos ocupar el teorema de Stokes por lo
+  tanto
+  \begin{equation*}
+    \oint_{C} F dr = \iint_{S} (\nabla \times F) dS
+  \end{equation*}
+
+  Calculemos el rotor
+  \begin{equation*}
+    \nabla \times F = \curl{x \sin x - 2y^{2}}{y \cos y - 2z}{\tan z - 2x} = (2, 2, 4y)
+  \end{equation*}
+
+  Consideremos la siguiente parametrizacion, con las variaciones por determinar
+  \begin{equation*}
+    \phi(x, y) = (x, y, 2y)
+  \end{equation*}
+
+  donde sabemos que la normal es
+  \begin{equation*}
+    \hat{n} = (-f_{x}, -f_{y}, 1) = (0, -2, 1)
+  \end{equation*}
+
+  Por lo tanto
+  \begin{equation*}
+    \iint_{S} (\nabla \times F) \cdot \hat{n} dS = \iint_{D} -4 + 4y dA
+  \end{equation*}
+
+  Intersectando las 2 superficies obtenemos que
+  \begin{equation*}
+    4x^{2} + 9y^{2} \leq 36
+  \end{equation*}
+
+  Con el siguiente cambio de coordenadas se tiene que
+  \begin{gather*}
+    x(r, \theta) = 3 r \cos(\theta)\\
+    y(r, \theta) = 2 r \sin(\theta)
+  \end{gather*}
+  con $r \in [0, 1], \theta \in [0, 2\pi]$
+
+  y el jacobiano es
+  \begin{equation*}
+    J = \begin{vmatrix}
+      3 \cos(\theta) & -3r\sin(\theta)\\
+      2 \sin(\theta) & 2r \cos(\theta)
+    \end{vmatrix} = 6r
+  \end{equation*}
+
+  Por el teorema de cambio de coordenadas
+  \begin{equation*}
+    \iint_{D} -4 + 4y dA = \int_{0}^{2\pi}\int_{0}^{1} (-4 + 8r \sin\theta)6r dr d\theta = -24\pi
+  \end{equation*}
+
+\end{solution}
+
+\begin{problem}
+  Considere $C$ la curva de interseccion entre las superficies $S_{1}: x + y + z = 1$ y $S_{2} : z = 2 - x^{2} - y^{2}$. Calcule el trabajo efectuado por el campo de fuerzas
+  \begin{equation*}
+    F(x, y, z) = (yz, e^{y^{3}}, \cos(z) + y)
+  \end{equation*}
+  a lo largo de la curva $C$.
+\end{problem}
+\begin{solution}
+  Como ocuparemos el Teorema de Stokes, calcularemos el rotor primero
+  \begin{equation*}
+    \nabla \times F = \curl{yz}{e^{y^{3}}}{\cos(z) + y} = (1, y, -z)
+  \end{equation*}
+
+  Calculemos la curva interseccion
+  \begin{gather*}
+    1 - x - y = 2 - x^{2} - y^{2}\\
+    x^{2} - x + 1 + y^{2} - y = 2\\
+    (x - \frac{1}{2})^{2} + (y - \frac{1}{2})^{2} = \frac{3}{2}
+  \end{gather*}
+
+  Luego la curva de interseccion esta parametrizada por
+  \begin{align*}
+    x(t) &= \sqrt{\frac{3}{2}} \cos(t) + \frac{1}{2}\\
+    y(t) &= \sqrt{\frac{3}{2}} \sin(t) + \frac{1}{2}\\
+    z(t) &= - \sqrt{\frac{3}{2}}(\cos(t) + \sin(t))
+  \end{align*}
+  con $t \in [0, 2\pi]$. Por el teorema de Stokes
+\end{solution}
+
+\begin{problem}
+  Determine el trabajo ejercido por el campo vectorial
+  \begin{equation*}
+    F(x, y, z) = (\cos(x^{2}) - 2y, e^{y} - 2z, \sin(z^{6}) - 2x)
+  \end{equation*}
+  a lo largo de la curva $C$ que se obtiene de la interseccion del elipsoide $9x^{2} + 3y^{2} + \frac{z^{2}}{4} = 36$ con el plano $z = 2y$
+\end{problem}
+\begin{solution}
+Ocuparemos el teorema de Stokes
+
+Primero calcularemos el rotacional
+\begin{equation*}
+  \nabla \times F = \curl{\cos(x^{2}) - 2y}{e^{y} - 2z}{\sin(z^{6}) - 2x} = (2, 2, 2)
+\end{equation*}
+
+Ocuparemos la parametrizacion natural, luego
+\begin{equation*}
+  \Phi(x, y) = (x, y, 2y)
+\end{equation*}
+
+Entonces tenemos que
+\begin{equation*}
+  \int_{C} F dr = \iint_{S} \nabla \times F dS
+\end{equation*}
+
+Tenemos que la integral de superficie es
+\begin{equation*}
+  \iint_{S} \nabla \times F dS = \iint_{R_{xy}}(2, 2, 2) \cdot (0, -2, 1) dA = \iint_{R_{xy}} -2 dA = -12\pi
+\end{equation*}
+
+\end{solution}
+
+\begin{problem}
+  Dado $F(x, y, z) = (\cosh y, zx^{2}, x)$ y $S$ la superficie limitada por la curva $\Gamma$, obtenida de la intersecion
+  \begin{equation*}
+    S_{1}: x + y = 2 \land S_{2}: x^{2} + y^{2} + z^{2} = 2(x + y)
+  \end{equation*}
+  orientada contrareloj vista desde el origen. Calcule $\iint_{S} \nabla \times F dS$
+\end{problem}
+\begin{solution}
+  Veamos quien es $\Gamma$
+  \begin{align*}
+    x^{2} + (2 - x)^{2} + z^{2} &= 4\\
+    x^{2} + 4 - 4x + x^{2} + z^{2} &= 4\\
+    2x^{2} - 4x + z^{2} &= 0\\
+    2(x^{2} - 2x) + z^{2} &= 0\\
+    2(x - 1)^{2} + z^{2} &= 2\\
+    (x - 1)^{2} + \frac{z^{2}}{2} &= 1
+  \end{align*}
+
+  Luego la parametrizacion de esta curva es
+  \begin{equation*}
+    \Phi(r, \theta) = (r \cos(\theta) + 1, 1 - r \cos(\theta), \sqrt{2}r \sin(\theta)
+  \end{equation*}
+
+  Calculemos le rotor
+  \begin{equation*}
+    \nabla \times F = \curl{\cosh y}{zx^{2}}{x} = (-x^{2}, -1, 2zx - \sinh(y))
+  \end{equation*}
+
+  Ahora calculemos la normal
+  \begin{equation*}
+    \hat{n} = \Phi_{r} \times \Phi_{\theta} = \crossprod{\cos(\theta)}{-\cos(\theta)}{\sqrt{2}\sin(\theta)}{-r \sin(\theta)}{r \sin(\theta)}{\sqrt{2}r \cos(\theta)} = (-\sqrt{2} r, -\sqrt{2} r, 0)
+  \end{equation*}
+
+  Entonces
+  \begin{gather*}
+    \int_{0}^{2\pi}\int_{0}^{1} (r \cos(\theta) + 1)^{2}\sqrt{2}r + \sqrt{2}r dr d\theta =\\
+    \int_{0}^{2\pi}\int_{0}^{1} \sqrt{2}r (r^{2} \cos^{2}(\theta) + 2r \cos(\theta) + 2) dr d \theta =\\
+    \frac{\pi \sqrt{2}}{4} + 2\sqrt{2} \pi = \frac{9}{4} \sqrt{2} \pi
+  \end{gather*}
+
+\end{solution}
+
+\subsection{Teorema de la divergencia}
+\begin{problem}
+  Usando el teorema de la divergencia calcule $\iint_{S} F \cdot \hat{n} dS$ donde $S$ es la superficie lateral
+  del tronco del cono $z = \sqrt{x^{2} + y^{2}}$ limitado por los planos $z = 1$ y $z = 4$ y
+  $F(x, y, z) = (x^{2} + 2z, y^{2} + z^{2}, 1)$ y $\hat{n}$ es la normal exterior.
+\end{problem}
+\begin{solution}
+  Consideremos la siguiente superficie $S^{\star} = S \cup S^{T_{1}} \cup S^{T_{2}}$ donde tenemos que
+  \begin{gather*}
+    S^{T_{1}}: x^{2} + y^{2} \leq 16, z = 4\\
+    S^{T_{2}}: x^{2} + y^{2} \leq 1, z = 1
+  \end{gather*}
+
+  Dado que $S^{\star}$ es una superficie cerrada, podemos ocupar el teorema de Gauss el cual dice
+  \begin{equation*}
+    \iint_{S^{\star}} F \cdot \hat{n} dS = \iiint_{V} \nabla \cdot F dV
+  \end{equation*}
+
+  Calculemos la divergencia
+  \begin{equation*}
+    \nabla \cdot F = 2x + 2y
+  \end{equation*}
+
+  Calculemos la integral. Calculemos las variaciones en las coordenadas cilindricas
+  \begin{gather*}
+    0 \leq r \leq z\\
+    1 \leq z \leq 4\\
+    0 \leq \theta \leq 2\pi
+  \end{gather*}
+  Y sabemos que el jacobiano de las cilindricas es $r$. Calculemos la integral
+  \begin{equation*}
+    \iiint_{V} \nabla \cdot F dV = \int_{0}^{2\pi}\int_{1}^{4}\int_{0}^{z} (2r \cos \theta + 2r \sin \theta) r dr dz d \theta = 0
+  \end{equation*}
+
+  Por el teorema de Gauss entonces tenemos que
+  \begin{equation*}
+    \iint_{S} F \cdot \hat{n} dS + \iint_{S^{T_{1}}} F \cdot \hat{n} dS + \iint_{S^{T_{2}}} F \cdot \hat{n} dS = 0
+  \end{equation*}
+
+  Calculemos la segunda integral.
+  \begin{equation*}
+    \iint_{S^{T_{1}}} F \cdot \hat{n} dS = \int_{0}^{2\pi}\int_{0}^{1} -r dr d\theta = -\pi
+  \end{equation*}
+
+  Calculemos la tercera integral.
+  \begin{equation*}
+    \iint_{S^{T_{2}}} F \cdot \hat{n} dS = \int_{0}^{2\pi}\int_{0}^{4} r dr d \theta = 16\pi
+  \end{equation*}
+
+  Concluyendo asi que
+  \begin{equation*}
+    \iint_{S} F \cdot \hat{n} dS = -15\pi
+  \end{equation*}
+\end{solution}
+
+\begin{problem}
+  Sea $F(x, y, z) = (y^{2} - z^{2}, x^{2} - y^{3}, 3zy^{2} + z^{2}e^{x^{2} + y^{2}})$ y $S$ el contorno de la region encerrada por las superficies $x^{2} + y^{2} - z^{2} = 1$, $z = 0$, $z = 3$, calcule $\iint_{s} F dS$
+\end{problem}
+\begin{solution}
+  Cerremos la superficie para poder ocupar el teorema de la divergencia. Definamos la siguiente superficie
+  \begin{equation*}
+    S^{\star} = S \cup S^{T_{1}} \cup S^{T_{2}}
+  \end{equation*}
+  donde $S^{T_{1}}: x^{2} + y^{2} \leq 1,  z = 0$ y $S^{T_{2}}: x^{2} + y^{2} \leq 10, z = 3$
+
+  Ahora por la formula de Ostrogradski tenemos que
+  \begin{equation*}
+    \iint_{S^{\star}} F dS = \iiint_{V} \nabla \cdot F dV
+  \end{equation*}
+
+  Calculemos la divergencia
+  \begin{equation*}
+    \nabla \cdot F = 2ze^{x^{2} + y^{2}}
+  \end{equation*}
+
+  Ocupando coordenadas cilindricas
+  \begin{gather*}
+    x = r \cos (\theta)\\
+    y = r \sin (\theta)\\
+    z = z
+  \end{gather*}
+
+  con $0, \leq z \leq 3$, $0 \leq \theta \leq 2\pi$, $0 \leq r \leq \sqrt{1 + z^{2}}$ y el Jacobiano es $r$ entonces
+  \begin{align*}
+    \iiint_{V} 2ze^{x^{2} + y^{2}} dV &= \int_{0}^{2\pi}\int_{0}^{3}\int_{0}^{\sqrt{1 + z^{2}}} 2zre^{r^{2}} dr dz d\theta\\
+                                      &= 2\pi \int_{0}^{3} z(e^{1 + z^{2}} - 1) dz\\
+    &= \fem
+  \end{align*}
+
+  \begin{equation*}
+    \iint_S F dS + \iint_{S^{T_1}} F dS + \iint_{S^{T_2}} F dS = \fem
+  \end{equation*}
+\end{solution}
+
+\begin{problem}
+Si $\Omega = \{(x, y, z) \in \R^{3} : x^{2} + y^{2} + z^{2} \leq a^{2}, z \geq \sqrt{x^{2} + y^{2}}\}$, donde $a > 0$. Calcule el flujo a traves de la superficie frontera de $\Omega$ en sentido normal exterior a esta del campo, donde el campo es $F(x, y, z) = (x \cos^{2}(z), y \sin^{2}(z), e^{x}\sin(y - x) + z)$
+\end{problem}
+\begin{solution}
+Notemos que la frontera del volumen dado es cerrada, simple regular y suave. $F \in \mathcal{C}^{\infty}$, calculemos la divergencia.
+\begin{equation*}
+\nabla \cdot F(x, y, z) = \cos^{2}(z) + \sin^{2}(z) + 1 = 2
+\end{equation*}
+
+Entonces por el teorema de Gauss tenemos que el flujo es el siguiente
+\begin{equation*}
+\Phi = \iint_{S} F dS = \iiint_{V} \nabla \cdot F dV = 2 \iiint_{V} dV
+\end{equation*}
+
+Aplicando coordenadas esfericas obtenemos
+\begin{gather*}
+  x = \rho \cos(\theta) \sin(\phi)\\
+  y = \rho \sin(\theta) \sin(\phi)\\
+  z = \rho \cos(\phi)\\
+  J = \rho^{2} \sin(\phi)
+\end{gather*}
+
+Entonces $\Omega$ queda de la siguiente forma
+\begin{equation*}
+  \rho^{2} \leq a^{2} \land \cos(\phi) \geq \sin(\phi)
+\end{equation*}
+
+Luego nuestras variaciones son
+\begin{gather*}
+  0 \leq \theta \leq 2\pi\\
+  0 \leq \rho \leq a\\
+  0 \leq \phi \leq \frac{\pi}{4}
+\end{gather*}
+
+Entonces nuestra solucion es
+\begin{equation*}
+2 \int_{0}^{2\pi}\int_{0}^{a}\int_{0}^{\frac{\pi}{4}} \rho^{2} \sin(\phi) dV = 4\pi \frac{a^{3}}{3} (1 - \frac{1}{\sqrt{2}})
+\end{equation*}
+\end{solution}
+
+\begin{problem}
+  Considere la superficie $S = S_{1} \cup S_{2}$ donde
+  \begin{gather*}
+    S_{1} : x^{2} + y^{2} + 2(x - 2y) + 4 \leq 0, z = x + 2\\
+    S_{2} : x^{2} + y^{2} + 2(x - 2y) + 4 = 0, x + 2 \leq z \leq 4 + 2x
+  \end{gather*}
+
+  Calcule el flujo de $F(x, y, z) = (z, y, x)$ a traves de la superficie $S$.
+\end{problem}
+\begin{solution}
+  Escribamos de otra forma la primera superficie
+  \begin{equation*}
+    x^{2} + y^{2} + 2x - 4y + 4 \leq 0 \implies x^{2} + y^{2} + 2z - 4y \leq 0 \implies x^{2} + (y - 2)^{2} + 2z \leq 4
+  \end{equation*}
+  La cual queda de la siguiente forma
+  \begin{equation*}
+    -\frac{1}{2}(x^{2} + (y - 2)^{2}) + 2 \leq z
+  \end{equation*}
+
+  \begin{equation*}
+    2x + 4 = -x^{2} -y^{2} + 4y
+  \end{equation*}
+
+  Por lo tanto
+  \begin{equation*}
+    -\frac{1}{2}(x^{2} + y^{2} - 4y) \leq z \leq -(x^{2} + y^{2} - 4y)
+  \end{equation*}
+\end{solution}
+
+\subsection{Sturm-Liouville}
+\begin{problem}
+  Resuelva el siguiente problema de Sturm-Liouville
+  \begin{equation*}
+    \begin{dcases}
+      x''(x) - 2x'(x) + \lambda x(x) = 0\\
+      x(0) = 0\\
+      x'(1) = x(1)
+    \end{dcases}
+  \end{equation*}
+\end{problem}
+\begin{solution}
+    La ecuacion caracteristica asociada al problema es
+    \begin{equation*}
+      m^{2} - 2m + \lambda = 0
+    \end{equation*}
+
+    Luego las soluciones vienen dadas por
+    \begin{equation*}
+      m_{1,2} = \frac{2 \pm \sqrt{4 - 4\lambda}}{2} = 1 \pm \sqrt{1 - \lambda}
+    \end{equation*}
+
+    \begin{enumerate}
+      \item Caso $\lambda < 1$. Tenemos que $1 - \lambda > 0$ por lo tanto la solucion a la EDO
+            viene dada por
+            \begin{equation*}
+              x(x) = Ae^{(1 + \sqrt{1 - \lambda})x} + B e^{(1 - \sqrt{1 - \lambda})x}
+            \end{equation*}
+
+            Derivamos
+            \begin{equation*}
+              x'(x) = A(1 + \sqrt{1 - \lambda})e^{(1 + \sqrt{1 - \lambda})x} + B(1 - \sqrt{1 - \lambda})e^{(1 - \sqrt{1 - \lambda})x}
+            \end{equation*}
+
+            Aplicando condiciones iniciales obtenemos
+            \begin{gather*}
+              A + B = 0\\
+              A(1 + \sqrt{1 - \lambda})e^{1 + \sqrt{1 - \lambda}} + B(1 - \sqrt{1 - \lambda})e^{1 - \sqrt{1 - \lambda}} = Ae^{1 + \sqrt{1 - \lambda}} + Be^{1 - \sqrt{1 - \lambda}}
+            \end{gather*}
+
+            Moviendo las cosas
+            \begin{gather*}
+              A\sqrt{1 - \lambda}e^{1 + \sqrt{1 - \lambda}}  - B\sqrt{1 - \lambda}e^{1 - \sqrt{1 - \lambda}} = 0\\
+              A(\sqrt{1 - \lambda}e^{1 + \sqrt{1 - \lambda}} + \sqrt{1 - \lambda}e^{1 - \sqrt{1 - \lambda}}) = 0\\
+              A = 0 \implies B = 0
+            \end{gather*}
+      \item Caso $\lambda > 1$. Tenemos que $1 - \lambda < 0$ por lo tanto la solucion a la EDO viene dada por
+            \begin{equation*}
+              x(x) = e^{x}(A \cos(\sqrt{\lambda - 1} x) + B \sin(\sqrt{\lambda - 1}x))
+            \end{equation*}
+
+            Aplicando la primera condicion inicial
+            \begin{equation*}
+              A = 0
+            \end{equation*}
+
+            entonces
+            \begin{equation*}
+              x(x) = B e^{x} \sin(\sqrt{\lambda - 1}x)
+            \end{equation*}
+
+            luego
+            \begin{equation*}
+              x'(x) = Be^{x} \sin(\sqrt{\lambda - 1} x) + Be^{x} \sqrt{\lambda - 1}\cos(\sqrt{\lambda - 1} x)
+            \end{equation*}
+
+            ocupando la segunda condicion inicial
+            \begin{equation*}
+              Be^{x}\sqrt{\lambda - 1} \cos(\sqrt{\lambda - 1}) = 0
+            \end{equation*}
+
+            Como estamos buscando soluciones no nulas
+            \begin{equation*}
+              \cos(\sqrt{\lambda - 1}) = 0 \implies \sqrt{\lambda - 1} = \frac{\pi}{2} + k \pi
+            \end{equation*}
+
+            Por lo tanto los valores propios son
+            \begin{equation*}
+              \lambda_{n} = (\frac{(1 + 2n)\pi}{2})^{2} + 1
+            \end{equation*}
+            y las funciones propias son
+            \begin{equation*}
+              x_{n}(x) = A_{n}\sin(\sqrt{\lambda_{n} - 1}x)
+            \end{equation*}
+
+      \item Caso $\lambda = 1$. Luego la solucion a la edo es
+            \begin{equation*}
+              x(x) = Ae^{x} + Bxe^{x}
+            \end{equation*}
+
+            Aplicando la primera condicion inicial
+            \begin{equation*}
+              A = 0
+            \end{equation*}
+
+            Por lo tanto
+            \begin{equation*}
+              x(x) = Bxe^{x} \implies x'(x) = Be^{x} + Bxe^{x}
+            \end{equation*}
+
+            Con la segunda condicion inicial tenemos
+            \begin{equation*}
+              B = 0
+            \end{equation*}
+
+            Soluciones triviales.
+    \end{enumerate}
+
+    Por lo tanto las soluciones son
+    \begin{equation*}
+      x_{n}(x) = A_{n}\sin(\sqrt{\lambda_{n} - 1}x)
+    \end{equation*}
+    \begin{equation*}
+      \lambda_{n} = (\frac{(1 + 2n)\pi}{2})^{2} + 1
+    \end{equation*}
+
+\end{solution}
+
+\subsection{EDP}
+\begin{problem}
+  Resuelva la siguiente EDP mediante la tecnica de separacion de variables
+  \begin{equation*}
+    \begin{dcases}
+      v_{t} &= v_{xx}\\
+      v(0, t) &= 0\\
+      v_{x}(2, t) &= 0\\
+      v(x, 0) &= 5 \sin(\frac{3\pi x}{4})
+    \end{dcases}
+  \end{equation*}
+\end{problem}
+\begin{solution}
+  Por el metodo de separacion de variables planteamos la siguiente solucion.
+  \begin{equation*}
+    v(x, t) = X(x)T(t)
+  \end{equation*}
+  Reemplazamos en la primera ecuacion
+  \begin{equation*}
+    XT' = X''T \implies \frac{T'}{T} = \frac{X''}{X} = - \lambda
+  \end{equation*}
+
+  Entonces tenemos la siguiente EDO.
+  \begin{equation*}
+    \frac{T'}{T} = -\lambda \implies T_{n}(t) = A_{n}e^{-\lambda_{n} t}
+  \end{equation*}
+
+  Y obtenemos el siguiente problema de Sturm-Liouville
+  \begin{equation*}
+    \begin{dcases}
+      X'' + \lambda X &= 0\\
+      X(0) &= 0\\
+      X'(2) &= 0
+    \end{dcases}
+  \end{equation*}
+
+  Donde la solucion vienen dada por
+  \begin{gather*}
+    \lambda_{n} = (\frac{(n - \frac12)\pi}{2})^{2}\\
+    X_{n}(x) = \sin(\frac{(n - \frac12)\pi}{2} x)
+  \end{gather*}
+
+  Entonces la solucion formal a nuestra EDP es
+  \begin{equation*}
+    v(x, t) = \sum_{n = 1}^{\infty} A_{n}e^{-(\frac{(n - \frac12)\pi}{2})^{2} t} \sin(\frac{(n - \frac12)\pi}{2} x)
+  \end{equation*}
+
+  Aplicando la condicion inicial obtenemos que
+  \begin{equation*}
+    5 \sin (\frac{3\pi}{4}x) = \sum_{n = 1}^{\infty} A_{n} \sin(\frac{(n - \frac12)\pi}{2} x)
+  \end{equation*}
+  Por la ortogonalidad de las eigenfunciones obtenemos que todos los $A_{n} = 0$ excepto cuando
+  \begin{equation*}
+    \frac{3 \pi}{4} = \frac{(n - \frac{1}{2})\pi}{2} \implies n = 2
+  \end{equation*}
+
+  en cuyo caso tenemos que $A_{2} = 5$. Por lo tanto la solucion a nuestra EDP es
+  \begin{equation*}
+    v(x, t) = 5 e^{-\frac{9\pi^{2}}{16} t} \sin(\frac{3\pi}{4} x)
+  \end{equation*}
+\end{solution}
+
+\begin{problem}
+  Resuelva la siguiente EDP mediante la tecnica de separacion de variables
+  \begin{equation*}
+  \begin{dcases}
+    u_{tt} &= u_{xx} - u_t\\
+    u_x(0, t) &= 0\\
+    u(\pi, t) &= 0\\
+    u(x, 0) &= 0\\
+    u_t(x, 0) &= 3 \cos(\frac{5\pi}{2})
+  \end{dcases}
+  \end{equation*}
+\end{problem}
+\begin{solution}
+  Por el metodo de separacion de variables tenemos que
+  \begin{equation*}
+    u(x, t) = X(x)T(t)
+  \end{equation*}
+
+  Reemplazando en la primera ecuacion obtenemos
+  \begin{equation*}
+    XT'' = X''T - XT' \implies XT'' + XT' = X''T \implies \frac{T''}{T} + \frac{T'}{T} = \frac{X''}{X} = -\lambda
+  \end{equation*}
+
+  Resolvamos primero la EDO que nos queda en $T$
+  \begin{equation*}
+    T'' + T' + \lambda T = 0
+  \end{equation*}
+
+  esto es una EDO lineal de segundo orden, resolveremos mediante el polinomio caracteristico.
+  \begin{equation*}
+    m^{2} + m + \lambda = 0
+  \end{equation*}
+
+  donde las soluciones son
+  \begin{equation*}
+    m = \frac{-1 \pm \sqrt{1 - 4\lambda}}{2}
+  \end{equation*}
+
+  Por lo tanto necesitamos saber el valor de $\lambda$. Resolvamos el problema de Sturm-Liouville
+  \begin{equation*}
+    \begin{dcases}
+      X'' + \lambda X &= 0\\
+      X'(0) &= 0\\
+      X(\pi) &= 0
+    \end{dcases}
+  \end{equation*}
+  Donde la solucion viene dada por
+  \begin{gather*}
+    \lambda_{n} = (n - \frac12)^{2}\\
+    X_{n}(x) = \cos((n - \frac12)x)
+  \end{gather*}
+  Volviendo a la EDO anterior obtenemos que dado que $\lambda_{n} \geq \frac{1}{4}$ las soluciones son
+  \begin{gather*}
+    T_{1}(t) = Ae^{-\frac12 t} + Bxe^{-\frac12 t}\\
+    T_{n}(t) = e^{-\frac12 t}(A \cos(\sqrt{n^{2} - n} t) + B \sin(\sqrt{n^{2} - n}t))
+  \end{gather*}
+
+  Luego la solucion formal a nuestra EDP es
+\end{solution}
+\end{document}

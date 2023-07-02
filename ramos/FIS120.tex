@@ -1,0 +1,104 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\begin{solution}
+Asumiremos que la barra parte a una distancia $d$ de la resistencia.
+
+Dado que la velocidad de la barra es constante tenemos que la posicision en funcion del tiempo
+es
+\begin{equation*}
+  x(t) = d + v_{0}t
+\end{equation*}
+
+Dado que el flujo es ortogonal a la superficie considerada tenemos lo siguiente
+\begin{equation*}
+\phi(t) = B_{0}Lx(t)
+\end{equation*}
+
+entonces tenemos que
+\begin{equation*}
+  \phi'(t) = B_{0}Lx'(t) = B_{0}v_{0}L
+\end{equation*}
+
+Por la ley de faraday tenemos que se genera corriente, la cual genera un campo magnetico que se opone al cambio en el flujo es decir
+\begin{equation*}
+  \fem = -\phi'(t)
+\end{equation*}
+Entonces la direccion del campo magnetico que genera la FEM es $-\hat{k}$.
+De lo que se deduce que la direccion de la FEM es $-\hat{j}$.
+
+Por ley de ohm sabemos que
+\begin{equation*}
+\frac{-B_{0}v_{0}L}{R} = \frac{\fem}{R} = I
+\end{equation*}
+\end{solution}
+\begin{solution}
+  El campo magnetico generado por el cable infinito a su derecha es
+  \begin{equation*}
+    B(r, t) = \frac{\mu_{0}I(t)}{2\pi r} (-\hat{k})
+  \end{equation*}
+
+  Entonces tenemos que el flujo es
+  \begin{equation*}
+    -\int_{0}^{a}\int_{a}^{2a} \frac{\mu_{0}I}{2\pi r} dr dy = -\frac{\mu_{0} I a}{2\pi} \ln(2)
+  \end{equation*}
+  No existe FEM inducida pues no depende del tiempo.
+
+  Ahora si suponemos que $I(t) = I_{0}\sin(\omega t)$
+  \begin{equation*}
+    \phi(t) = -\int_{0}^{a}\int_{a}^{2a} \frac{\mu_{0}I_{0} \sin(\omega t)}{2\pi r} dr dy = -\frac{\mu_{0} I_{0} \sin(\omega t) a}{2\pi} \ln(2)
+  \end{equation*}
+  Por lo que tenemos que
+  \begin{equation*}
+    \phi'(t) = -\frac{\mu_{0} I_{0} \omega a \cos(\omega t)}{2\pi} \ln(2)
+  \end{equation*}
+
+  Entonces la FEM inducida es
+  \begin{equation*}
+    \fem = \frac{\mu_{0} I_{0} \omega a \cos(\omega t)}{2\pi} \ln(2)
+  \end{equation*}
+\end{solution}
+\begin{solution}
+  El campo generado por el cable por debajo de este en el tiempo $t$ viene dado por
+  \begin{equation*}
+    B(r, t) = \frac{\mu_{0}I(t)}{2\pi r} = \frac{\mu_{0} (a + bt)}{2\pi r} (-\hat{k})
+  \end{equation*}
+
+  Luego el flujo viene dado por
+  \begin{equation*}
+    \phi(t) = \int_{-h}^{-h - \omega}\int_{0}^{L} \frac{\mu_{0} (a + bt)}{2\pi r} dx dr = \frac{\mu_{0} (a + bt)}{2\pi} L \ln(\frac{-h - \omega}{-h})
+  \end{equation*}
+
+  Luego tenemos que
+  \begin{equation*}
+    \fem = -\phi'(t) = - \frac{\mu_{0} b}{2\pi} L \ln(\frac{-h - \omega}{-h})
+  \end{equation*}
+\end{solution}
+\begin{solution}
+  Notemos que el flujo a traves de la ``espira'' viene dado por
+  \begin{equation*}
+    \phi(t) = 2.5 \cdot \ell \cdot x(t)
+  \end{equation*}
+
+  Entonces
+  \begin{equation*}
+    \fem = -2.5 \cdot 1.2 \cdot 2 = -6 [V]
+  \end{equation*}
+
+  Por lo tanto
+  \begin{equation*}
+    I_{ind} = \frac{\fem}{R} = 1 [A]
+  \end{equation*}
+
+  Luego tenemos que
+  \begin{equation*}
+    F_{mag} = \int_{0}^{l} 1 dl \times B = 2.5 \cdot \ell \cdot \hat{j} = -3 \hat{i} [N]
+  \end{equation*}
+
+  Luego la fuerza requerida es $3 \hat{i} [N]$
+  \begin{equation*}
+    P = \fem \cdot I = 6 [W]
+  \end{equation*}
+\end{solution}
+
+\end{document}
