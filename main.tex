@@ -21,6 +21,108 @@
 \maketitle
 \tableofcontents
 
+\section{FIS120}
+\begin{solution}
+Asumiremos que la barra parte a una distancia $d$ de la resistencia.
+
+Dado que la velocidad de la barra es constante tenemos que la posicision en funcion del tiempo
+es
+\begin{equation*}
+  x(t) = d + v_{0}t
+\end{equation*}
+
+Dado que el flujo es ortogonal a la superficie considerada tenemos lo siguiente
+\begin{equation*}
+\phi(t) = B_{0}Lx(t)
+\end{equation*}
+
+entonces tenemos que
+\begin{equation*}
+  \phi'(t) = B_{0}Lx'(t) = B_{0}v_{0}L
+\end{equation*}
+
+Por la ley de faraday tenemos que se genera corriente, la cual genera un campo magnetico que se opone al cambio en el flujo es decir
+\begin{equation*}
+  \fem = -\phi'(t)
+\end{equation*}
+Entonces la direccion del campo magnetico que genera la FEM es $-\hat{k}$.
+De lo que se deduce que la direccion de la FEM es $-\hat{j}$.
+
+Por ley de ohm sabemos que
+\begin{equation*}
+\frac{-B_{0}v_{0}L}{R} = \frac{\fem}{R} = I
+\end{equation*}
+\end{solution}
+\begin{solution}
+  El campo magnetico generado por el cable infinito a su derecha es
+  \begin{equation*}
+    B(r, t) = \frac{\mu_{0}I(t)}{2\pi r} (-\hat{k})
+  \end{equation*}
+
+  Entonces tenemos que el flujo es
+  \begin{equation*}
+    -\int_{0}^{a}\int_{a}^{2a} \frac{\mu_{0}I}{2\pi r} dr dy = -\frac{\mu_{0} I a}{2\pi} \ln(2)
+  \end{equation*}
+  No existe FEM inducida pues no depende del tiempo.
+
+  Ahora si suponemos que $I(t) = I_{0}\sin(\omega t)$
+  \begin{equation*}
+    \phi(t) = -\int_{0}^{a}\int_{a}^{2a} \frac{\mu_{0}I_{0} \sin(\omega t)}{2\pi r} dr dy = -\frac{\mu_{0} I_{0} \sin(\omega t) a}{2\pi} \ln(2)
+  \end{equation*}
+  Por lo que tenemos que
+  \begin{equation*}
+    \phi'(t) = -\frac{\mu_{0} I_{0} \omega a \cos(\omega t)}{2\pi} \ln(2)
+  \end{equation*}
+
+  Entonces la FEM inducida es
+  \begin{equation*}
+    \fem = \frac{\mu_{0} I_{0} \omega a \cos(\omega t)}{2\pi} \ln(2)
+  \end{equation*}
+\end{solution}
+\begin{solution}
+  El campo generado por el cable por debajo de este en el tiempo $t$ viene dado por
+  \begin{equation*}
+    B(r, t) = \frac{\mu_{0}I(t)}{2\pi r} = \frac{\mu_{0} (a + bt)}{2\pi r} (-\hat{k})
+  \end{equation*}
+
+  Luego el flujo viene dado por
+  \begin{equation*}
+    \phi(t) = \int_{-h}^{-h - \omega}\int_{0}^{L} \frac{\mu_{0} (a + bt)}{2\pi r} dx dr = \frac{\mu_{0} (a + bt)}{2\pi} L \ln(\frac{-h - \omega}{-h})
+  \end{equation*}
+
+  Luego tenemos que
+  \begin{equation*}
+    \fem = -\phi'(t) = - \frac{\mu_{0} b}{2\pi} L \ln(\frac{-h - \omega}{-h})
+  \end{equation*}
+\end{solution}
+
+\begin{solution}
+  Notemos que el flujo a traves de la ``espira'' viene dado por
+  \begin{equation*}
+    \phi(t) = 2.5 \cdot \ell \cdot x(t)
+  \end{equation*}
+
+  Entonces
+  \begin{equation*}
+    \fem = -2.5 \cdot 1.2 \cdot 2 = -6 [V]
+  \end{equation*}
+
+  Por lo tanto
+  \begin{equation*}
+    I_{ind} = \frac{\fem}{R} = 1 [A]
+  \end{equation*}
+
+  Luego tenemos que
+  \begin{equation*}
+    F_{mag} = \int_{0}^{l} 1 dl \times B = 2.5 \cdot \ell \cdot \hat{j} = -3 \hat{i} [N]
+  \end{equation*}
+
+  Luego la fuerza requerida es $3 \hat{i} [N]$
+  \begin{equation*}
+    P = \fem \cdot I = 6 [W]
+  \end{equation*}
+\end{solution}
+
 \section{MAT024}
 \subsection{Teorema de Stokes}
 \begin{problem}
@@ -128,6 +230,109 @@ Calcule $\oint_{C} x \sin x - 2y^{2} dx + y \cos y - 2z dy + \tan z - 2x dz$ don
 
 \end{solution}
 
+\begin{problem}
+  Considere $C$ la curva de interseccion entre las superficies $S_{1}: x + y + z = 1$ y $S_{2} : z = 2 - x^{2} - y^{2}$. Calcule el trabajo efectuado por el campo de fuerzas
+  \begin{equation*}
+    F(x, y, z) = (yz, e^{y^{3}}, \cos(z) + y)
+  \end{equation*}
+  a lo largo de la curva $C$.
+\end{problem}
+\begin{solution}
+  Como ocuparemos el Teorema de Stokes, calcularemos el rotor primero
+  \begin{equation*}
+    \nabla \times F = \curl{yz}{e^{y^{3}}}{\cos(z) + y} = (1, y, -z)
+  \end{equation*}
+
+  Calculemos la curva interseccion
+  \begin{gather*}
+    1 - x - y = 2 - x^{2} - y^{2}\\
+    x^{2} - x + 1 + y^{2} - y = 2\\
+    (x - \frac{1}{2})^{2} + (y - \frac{1}{2})^{2} = \frac{3}{2}
+  \end{gather*}
+
+  Luego la curva de interseccion esta parametrizada por
+  \begin{align*}
+    x(t) &= \sqrt{\frac{3}{2}} \cos(t) + \frac{1}{2}\\
+    y(t) &= \sqrt{\frac{3}{2}} \sin(t) + \frac{1}{2}\\
+    z(t) &= - \sqrt{\frac{3}{2}}(\cos(t) + \sin(t))
+  \end{align*}
+  con $t \in [0, 2\pi]$. Por el teorema de Stokes
+\end{solution}
+
+\begin{problem}
+  Determine el trabajo ejercido por el campo vectorial
+  \begin{equation*}
+    F(x, y, z) = (\cos(x^{2}) - 2y, e^{y} - 2z, \sin(z^{6}) - 2x)
+  \end{equation*}
+  a lo largo de la curva $C$ que se obtiene de la interseccion del elipsoide $9x^{2} + 3y^{2} + \frac{z^{2}}{4} = 36$ con el plano $z = 2y$
+\end{problem}
+\begin{solution}
+Ocuparemos el teorema de Stokes
+
+Primero calcularemos el rotacional
+\begin{equation*}
+  \nabla \times F = \curl{\cos(x^{2}) - 2y}{e^{y} - 2z}{\sin(z^{6}) - 2x} = (2, 2, 2)
+\end{equation*}
+
+Ocuparemos la parametrizacion natural, luego
+\begin{equation*}
+  \Phi(x, y) = (x, y, 2y)
+\end{equation*}
+
+Entonces tenemos que
+\begin{equation*}
+  \int_{C} F dr = \iint_{S} \nabla \times F dS
+\end{equation*}
+
+Tenemos que la integral de superficie es
+\begin{equation*}
+  \iint_{S} \nabla \times F dS = \iint_{R_{xy}}(2, 2, 2) \cdot (0, -2, 1) dA = \iint_{R_{xy}} -2 dA = -12\pi
+\end{equation*}
+
+\end{solution}
+
+\begin{problem}
+  Dado $F(x, y, z) = (\cosh y, zx^{2}, x)$ y $S$ la superficie limitada por la curva $\Gamma$, obtenida de la intersecion
+  \begin{equation*}
+    S_{1}: x + y = 2 \land S_{2}: x^{2} + y^{2} + z^{2} = 2(x + y)
+  \end{equation*}
+  orientada contrareloj vista desde el origen. Calcule $\iint_{S} \nabla \times F dS$
+\end{problem}
+\begin{solution}
+  Veamos quien es $\Gamma$
+  \begin{align*}
+    x^{2} + (2 - x)^{2} + z^{2} &= 4\\
+    x^{2} + 4 - 4x + x^{2} + z^{2} &= 4\\
+    2x^{2} - 4x + z^{2} &= 0\\
+    2(x^{2} - 2x) + z^{2} &= 0\\
+    2(x - 1)^{2} + z^{2} &= 2\\
+    (x - 1)^{2} + \frac{z^{2}}{2} &= 1
+  \end{align*}
+
+  Luego la parametrizacion de esta curva es
+  \begin{equation*}
+    \Phi(r, \theta) = (r \cos(\theta) + 1, 1 - r \cos(\theta), \sqrt{2}r \sin(\theta)
+  \end{equation*}
+
+  Calculemos le rotor
+  \begin{equation*}
+    \nabla \times F = \curl{\cosh y}{zx^{2}}{x} = (-x^{2}, -1, 2zx - \sinh(y))
+  \end{equation*}
+
+  Ahora calculemos la normal
+  \begin{equation*}
+    \hat{n} = \Phi_{r} \times \Phi_{\theta} = \crossprod{\cos(\theta)}{-\cos(\theta)}{\sqrt{2}\sin(\theta)}{-r \sin(\theta)}{r \sin(\theta)}{\sqrt{2}r \cos(\theta)} = (-\sqrt{2} r, -\sqrt{2} r, 0)
+  \end{equation*}
+
+  Entonces
+  \begin{gather*}
+    \int_{0}^{2\pi}\int_{0}^{1} (r \cos(\theta) + 1)^{2}\sqrt{2}r + \sqrt{2}r dr d\theta =\\
+    \int_{0}^{2\pi}\int_{0}^{1} \sqrt{2}r (r^{2} \cos^{2}(\theta) + 2r \cos(\theta) + 2) dr d \theta =\\
+    \frac{\pi \sqrt{2}}{4} + 2\sqrt{2} \pi = \frac{9}{4} \sqrt{2} \pi
+  \end{gather*}
+
+\end{solution}
+
 \subsection{Teorema de la divergencia}
 \begin{problem}
   Usando el teorema de la divergencia calcule $\iint_{S} F \cdot \hat{n} dS$ donde $S$ es la superficie lateral
@@ -183,10 +388,387 @@ Calcule $\oint_{C} x \sin x - 2y^{2} dx + y \cos y - 2z dy + \tan z - 2x dz$ don
   \end{equation*}
 \end{solution}
 
+\begin{problem}
+  Sea $F(x, y, z) = (y^{2} - z^{2}, x^{2} - y^{3}, 3zy^{2} + z^{2}e^{x^{2} + y^{2}})$ y $S$ el contorno de la region encerrada por las superficies $x^{2} + y^{2} - z^{2} = 1$, $z = 0$, $z = 3$, calcule $\iint_{s} F dS$
+\end{problem}
+\begin{solution}
+  Cerremos la superficie para poder ocupar el teorema de la divergencia. Definamos la siguiente superficie
+  \begin{equation*}
+    S^{\star} = S \cup S^{T_{1}} \cup S^{T_{2}}
+  \end{equation*}
+  donde $S^{T_{1}}: x^{2} + y^{2} \leq 1,  z = 0$ y $S^{T_{2}}: x^{2} + y^{2} \leq 10, z = 3$
+
+  Ahora por la formula de Ostrogradski tenemos que
+  \begin{equation*}
+    \iint_{S^{\star}} F dS = \iiint_{V} \nabla \cdot F dV
+  \end{equation*}
+
+  Calculemos la divergencia
+  \begin{equation*}
+    \nabla \cdot F = 2ze^{x^{2} + y^{2}}
+  \end{equation*}
+
+  Ocupando coordenadas cilindricas
+  \begin{gather*}
+    x = r \cos (\theta)\\
+    y = r \sin (\theta)\\
+    z = z
+  \end{gather*}
+
+  con $0, \leq z \leq 3$, $0 \leq \theta \leq 2\pi$, $0 \leq r \leq \sqrt{1 + z^{2}}$ y el Jacobiano es $r$ entonces
+  \begin{align*}
+    \iiint_{V} 2ze^{x^{2} + y^{2}} dV &= \int_{0}^{2\pi}\int_{0}^{3}\int_{0}^{\sqrt{1 + z^{2}}} 2zre^{r^{2}} dr dz d\theta\\
+                                      &= 2\pi \int_{0}^{3} z(e^{1 + z^{2}} - 1) dz\\
+    &= \fem
+  \end{align*}
+
+  \begin{equation*}
+    \iint_S F dS + \iint_{S^{T_1}} F dS + \iint_{S^{T_2}} F dS = \fem
+  \end{equation*}
+\end{solution}
+
+
+\begin{problem}
+Si $\Omega = \{(x, y, z) \in \R^{3} : x^{2} + y^{2} + z^{2} \leq a^{2}, z \geq \sqrt{x^{2} + y^{2}}\}$, donde $a > 0$. Calcule el flujo a traves de la superficie frontera de $\Omega$ en sentido normal exterior a esta del campo, donde el campo es $F(x, y, z) = (x \cos^{2}(z), y \sin^{2}(z), e^{x}\sin(y - x) + z)$
+\end{problem}
+\begin{solution}
+Notemos que la frontera del volumen dado es cerrada, simple regular y suave. $F \in \mathcal{C}^{\infty}$, calculemos la divergencia.
+\begin{equation*}
+\nabla \cdot F(x, y, z) = \cos^{2}(z) + \sin^{2}(z) + 1 = 2
+\end{equation*}
+
+Entonces por el teorema de Gauss tenemos que el flujo es el siguiente
+\begin{equation*}
+\Phi = \iint_{S} F dS = \iiint_{V} \nabla \cdot F dV = 2 \iiint_{V} dV
+\end{equation*}
+
+Aplicando coordenadas esfericas obtenemos
+\begin{gather*}
+  x = \rho \cos(\theta) \sin(\phi)\\
+  y = \rho \sin(\theta) \sin(\phi)\\
+  z = \rho \cos(\phi)\\
+  J = \rho^{2} \sin(\phi)
+\end{gather*}
+
+Entonces $\Omega$ queda de la siguiente forma
+\begin{equation*}
+  \rho^{2} \leq a^{2} \land \cos(\phi) \geq \sin(\phi)
+\end{equation*}
+
+Luego nuestras variaciones son
+\begin{gather*}
+  0 \leq \theta \leq 2\pi\\
+  0 \leq \rho \leq a\\
+  0 \leq \phi \leq \frac{\pi}{4}
+\end{gather*}
+
+Entonces nuestra solucion es
+\begin{equation*}
+2 \int_{0}^{2\pi}\int_{0}^{a}\int_{0}^{\frac{\pi}{4}} \rho^{2} \sin(\phi) dV = 4\pi \frac{a^{3}}{3} (1 - \frac{1}{\sqrt{2}})
+\end{equation*}
+\end{solution}
+
+\begin{problem}
+  Considere la superficie $S = S_{1} \cup S_{2}$ donde
+  \begin{gather*}
+    S_{1} : x^{2} + y^{2} + 2(x - 2y) + 4 \leq 0, z = x + 2\\
+    S_{2} : x^{2} + y^{2} + 2(x - 2y) + 4 = 0, x + 2 \leq z \leq 4 + 2x
+  \end{gather*}
+
+  Calcule el flujo de $F(x, y, z) = (z, y, x)$ a traves de la superficie $S$.
+\end{problem}
+\begin{solution}
+  Escribamos de otra forma la primera superficie
+  \begin{equation*}
+    x^{2} + y^{2} + 2x - 4y + 4 \leq 0 \implies x^{2} + y^{2} + 2z - 4y \leq 0 \implies x^{2} + (y - 2)^{2} + 2z \leq 4
+  \end{equation*}
+  La cual queda de la siguiente forma
+  \begin{equation*}
+    -\frac{1}{2}(x^{2} + (y - 2)^{2}) + 2 \leq z
+  \end{equation*}
+
+  \begin{equation*}
+    2x + 4 = -x^{2} -y^{2} + 4y
+  \end{equation*}
+
+  Por lo tanto
+  \begin{equation*}
+    -\frac{1}{2}(x^{2} + y^{2} - 4y) \leq z \leq -(x^{2} + y^{2} - 4y)
+  \end{equation*}
+\end{solution}
+
+\subsection{Sturm-Liouville}
+\begin{problem}
+  Resuelva el siguiente problema de Sturm-Liouville
+  \begin{equation*}
+    \begin{dcases}
+      x''(x) - 2x'(x) + \lambda x(x) = 0\\
+      x(0) = 0\\
+      x'(1) = x(1)
+    \end{dcases}
+  \end{equation*}
+\end{problem}
+\begin{solution}
+    La ecuacion caracteristica asociada al problema es
+    \begin{equation*}
+      m^{2} - 2m + \lambda = 0
+    \end{equation*}
+
+    Luego las soluciones vienen dadas por
+    \begin{equation*}
+      m_{1,2} = \frac{2 \pm \sqrt{4 - 4\lambda}}{2} = 1 \pm \sqrt{1 - \lambda}
+    \end{equation*}
+
+    \begin{enumerate}
+      \item Caso $\lambda < 1$. Tenemos que $1 - \lambda > 0$ por lo tanto la solucion a la EDO
+            viene dada por
+            \begin{equation*}
+              x(x) = Ae^{(1 + \sqrt{1 - \lambda})x} + B e^{(1 - \sqrt{1 - \lambda})x}
+            \end{equation*}
+
+            Derivamos
+            \begin{equation*}
+              x'(x) = A(1 + \sqrt{1 - \lambda})e^{(1 + \sqrt{1 - \lambda})x} + B(1 - \sqrt{1 - \lambda})e^{(1 - \sqrt{1 - \lambda})x}
+            \end{equation*}
+
+            Aplicando condiciones iniciales obtenemos
+            \begin{gather*}
+              A + B = 0\\
+              A(1 + \sqrt{1 - \lambda})e^{1 + \sqrt{1 - \lambda}} + B(1 - \sqrt{1 - \lambda})e^{1 - \sqrt{1 - \lambda}} = Ae^{1 + \sqrt{1 - \lambda}} + Be^{1 - \sqrt{1 - \lambda}}
+            \end{gather*}
+
+            Moviendo las cosas
+            \begin{gather*}
+              A\sqrt{1 - \lambda}e^{1 + \sqrt{1 - \lambda}}  - B\sqrt{1 - \lambda}e^{1 - \sqrt{1 - \lambda}} = 0\\
+              A(\sqrt{1 - \lambda}e^{1 + \sqrt{1 - \lambda}} + \sqrt{1 - \lambda}e^{1 - \sqrt{1 - \lambda}}) = 0\\
+              A = 0 \implies B = 0
+            \end{gather*}
+      \item Caso $\lambda > 1$. Tenemos que $1 - \lambda < 0$ por lo tanto la solucion a la EDO viene dada por
+            \begin{equation*}
+              x(x) = e^{x}(A \cos(\sqrt{\lambda - 1} x) + B \sin(\sqrt{\lambda - 1}x))
+            \end{equation*}
+
+            Aplicando la primera condicion inicial
+            \begin{equation*}
+              A = 0
+            \end{equation*}
+
+            entonces
+            \begin{equation*}
+              x(x) = B e^{x} \sin(\sqrt{\lambda - 1}x)
+            \end{equation*}
+
+            luego
+            \begin{equation*}
+              x'(x) = Be^{x} \sin(\sqrt{\lambda - 1} x) + Be^{x} \sqrt{\lambda - 1}\cos(\sqrt{\lambda - 1} x)
+            \end{equation*}
+
+            ocupando la segunda condicion inicial
+            \begin{equation*}
+              Be^{x}\sqrt{\lambda - 1} \cos(\sqrt{\lambda - 1}) = 0
+            \end{equation*}
+
+            Como estamos buscando soluciones no nulas
+            \begin{equation*}
+              \cos(\sqrt{\lambda - 1}) = 0 \implies \sqrt{\lambda - 1} = \frac{\pi}{2} + k \pi
+            \end{equation*}
+
+            Por lo tanto los valores propios son
+            \begin{equation*}
+              \lambda_{n} = (\frac{(1 + 2n)\pi}{2})^{2} + 1
+            \end{equation*}
+            y las funciones propias son
+            \begin{equation*}
+              x_{n}(x) = A_{n}\sin(\sqrt{\lambda_{n} - 1}x)
+            \end{equation*}
+
+      \item Caso $\lambda = 1$. Luego la solucion a la edo es
+            \begin{equation*}
+              x(x) = Ae^{x} + Bxe^{x}
+            \end{equation*}
+
+            Aplicando la primera condicion inicial
+            \begin{equation*}
+              A = 0
+            \end{equation*}
+
+            Por lo tanto
+            \begin{equation*}
+              x(x) = Bxe^{x} \implies x'(x) = Be^{x} + Bxe^{x}
+            \end{equation*}
+
+            Con la segunda condicion inicial tenemos
+            \begin{equation*}
+              B = 0
+            \end{equation*}
+
+            Soluciones triviales.
+    \end{enumerate}
+
+    Por lo tanto las soluciones son
+    \begin{equation*}
+      x_{n}(x) = A_{n}\sin(\sqrt{\lambda_{n} - 1}x)
+    \end{equation*}
+    \begin{equation*}
+      \lambda_{n} = (\frac{(1 + 2n)\pi}{2})^{2} + 1
+    \end{equation*}
+
+\end{solution}
+
 \subsection{EDP}
+\begin{problem}
+  Resuelva la siguiente EDP mediante la tecnica de separacion de variables
+  \begin{equation*}
+    \begin{dcases}
+      v_{t} &= v_{xx}\\
+      v(0, t) &= 0\\
+      v_{x}(2, t) &= 0\\
+      v(x, 0) &= 5 \sin(\frac{3\pi x}{4})
+    \end{dcases}
+  \end{equation*}
+\end{problem}
+\begin{solution}
+  Por el metodo de separacion de variables planteamos la siguiente solucion.
+  \begin{equation*}
+    v(x, t) = X(x)T(t)
+  \end{equation*}
+  Reemplazamos en la primera ecuacion
+  \begin{equation*}
+    XT' = X''T \implies \frac{T'}{T} = \frac{X''}{X} = - \lambda
+  \end{equation*}
+
+  Entonces tenemos la siguiente EDO.
+  \begin{equation*}
+    \frac{T'}{T} = -\lambda \implies T_{n}(t) = A_{n}e^{-\lambda_{n} t}
+  \end{equation*}
+
+  Y obtenemos el siguiente problema de Sturm-Liouville
+  \begin{equation*}
+    \begin{dcases}
+      X'' + \lambda X &= 0\\
+      X(0) &= 0\\
+      X'(2) &= 0
+    \end{dcases}
+  \end{equation*}
+
+  Donde la solucion vienen dada por
+  \begin{gather*}
+    \lambda_{n} = (\frac{(n - \frac12)\pi}{2})^{2}\\
+    X_{n}(x) = \sin(\frac{(n - \frac12)\pi}{2} x)
+  \end{gather*}
+
+  Entonces la solucion formal a nuestra EDP es
+  \begin{equation*}
+    v(x, t) = \sum_{n = 1}^{\infty} A_{n}e^{-(\frac{(n - \frac12)\pi}{2})^{2} t} \sin(\frac{(n - \frac12)\pi}{2} x)
+  \end{equation*}
+
+  Aplicando la condicion inicial obtenemos que
+  \begin{equation*}
+    5 \sin (\frac{3\pi}{4}x) = \sum_{n = 1}^{\infty} A_{n} \sin(\frac{(n - \frac12)\pi}{2} x)
+  \end{equation*}
+  Por la ortogonalidad de las eigenfunciones obtenemos que todos los $A_{n} = 0$ excepto cuando
+  \begin{equation*}
+    \frac{3 \pi}{4} = \frac{(n - \frac{1}{2})\pi}{2} \implies n = 2
+  \end{equation*}
+
+  en cuyo caso tenemos que $A_{2} = 5$. Por lo tanto la solucion a nuestra EDP es
+  \begin{equation*}
+    v(x, t) = 5 e^{-\frac{9\pi^{2}}{16} t} \sin(\frac{3\pi}{4} x)
+  \end{equation*}
+\end{solution}
+
+\begin{problem}
+  Resuelva la siguiente EDP mediante la tecnica de separacion de variables
+  \begin{equation*}
+  \begin{dcases}
+    u_{tt} &= u_{xx} - u_t\\
+    u_x(0, t) &= 0\\
+    u(\pi, t) &= 0\\
+    u(x, 0) &= 0\\
+    u_t(x, 0) &= 3 \cos(\frac{5\pi}{2})
+  \end{dcases}
+  \end{equation*}
+\end{problem}
+\begin{solution}
+  Por el metodo de separacion de variables tenemos que
+  \begin{equation*}
+    u(x, t) = X(x)T(t)
+  \end{equation*}
+
+  Reemplazando en la primera ecuacion obtenemos
+  \begin{equation*}
+    XT'' = X''T - XT' \implies XT'' + XT' = X''T \implies \frac{T''}{T} + \frac{T'}{T} = \frac{X''}{X} = -\lambda
+  \end{equation*}
+
+  Resolvamos primero la EDO que nos queda en $T$
+  \begin{equation*}
+    T'' + T' + \lambda T = 0
+  \end{equation*}
+
+  esto es una EDO lineal de segundo orden, resolveremos mediante el polinomio caracteristico.
+  \begin{equation*}
+    m^{2} + m + \lambda = 0
+  \end{equation*}
+
+  donde las soluciones son
+  \begin{equation*}
+    m = \frac{-1 \pm \sqrt{1 - 4\lambda}}{2}
+  \end{equation*}
+
+  Por lo tanto necesitamos saber el valor de $\lambda$. Resolvamos el problema de Sturm-Liouville
+  \begin{equation*}
+    \begin{dcases}
+      X'' + \lambda X &= 0\\
+      X'(0) &= 0\\
+      X(\pi) &= 0
+    \end{dcases}
+  \end{equation*}
+  Donde la solucion viene dada por
+  \begin{gather*}
+    \lambda_{n} = (n - \frac12)^{2}\\
+    X_{n}(x) = \cos((n - \frac12)x)
+  \end{gather*}
+  Volviendo a la EDO anterior obtenemos que dado que $\lambda_{n} \geq \frac{1}{4}$ las soluciones son
+  \begin{gather*}
+    T_{1}(t) = Ae^{-\frac12 t} + Bxe^{-\frac12 t}\\
+    T_{n}(t) = e^{-\frac12 t}(A \cos(\sqrt{n^{2} - n} t) + B \sin(\sqrt{n^{2} - n}t))
+  \end{gather*}
+
+  Luego la solucion formal a nuestra EDP es
+\end{solution}
+
 
 \section{MAT225}
 \subsection{Topologia}
+\begin{problem}
+  Sea $(X, \topo)$ un espacio topologico tal que $B \subset X$ sea un subconjunto denso en $X$. Si
+  $A$ es un conjunto denso en $(B, \topo_{B})$, donde $\topo_{B}$ es la topologia inducida de $X$ en $B$, demostrar que $A$ es denso en $(X, \topo)$
+\end{problem}
+\begin{solution}
+  Sea $\theta \in \topo, \theta \neq \emptyset$, dado que $B$ es denso en $X$ tenemos que
+  \begin{equation}
+    \label{eqn_fst1}
+    \theta \cap B \neq \emptyset
+  \end{equation}
+  Pero sabemos que $\theta \cap B \in \topo_{B}$ y de (\ref{eqn_fst1}) sabemos que es no vacio, por lo tanto dado que $A$ es denso en $(B, \topo_{B})$ tenemos que
+  \begin{equation*}
+    (\theta \cap B) \cap A \neq \emptyset
+  \end{equation*}
+
+  Pero $\theta \cap B \cap A \subset \theta \cap A$, por lo tanto $\theta \cap A \neq \emptyset$.
+  Lo que significa que $A$ es denso en $(X, \topo)$
+\end{solution}
+
+\begin{problem}
+  Sea $f : (X, \topo) \to Y$, definamos $\topo_{f, Y} = \{\theta | \theta \subset Y, f^{-1}(\theta) \in \topo\}$
+  \begin{enumerate}
+    \item Demuestre que $\topo_{f, Y}$ es una topologia en $Y$.
+    \item Demuestre que $f: (X, \topo) \to (Y, \topo_{f, Y})$ es continua.
+  \end{enumerate}
+\end{problem}
+\begin{solution}
+  Notemos que $Y \in \topo_{f, Y}$ pues $X \in \topo$ y $f^{-1}(Y) = X$, analogamente $\emptyset \in \topo_{f, Y}$, pues $\emptyset \in \topo$ y $f^{-1}(\emptyset) = \emptyset$.
+\end{solution}
 
 \section{MAT210}
 \subsection{Teorema Espectral}
