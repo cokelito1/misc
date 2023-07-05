@@ -244,6 +244,63 @@ Tenemos que la integral de superficie es
   \end{equation*}
 \end{solution}
 
+\begin{problem}[Precertamen MAT024 2019]
+  Usar el teorema de Stokes para evaluar la integral de linea
+  \begin{equation*}
+    \int_{C} -y^{3} dx + x^{3} dy - z^{3} dz
+  \end{equation*}
+  donde $C$ es la interseccion del cilindro $x^{2} + y^{2} = 1$ y el plano $x + y + z = 1$, y la
+  orientacoin de $C$ es en sentido contrario a las manecillas del reloj, en el plano $xy$.
+\end{problem}
+\begin{solution}
+  Notemos que el campo vectorial dado es de clase $\mathcal{C}^{1}$, la curva es cerrada, simple y suave. Tambien notar que la superficie es orientable, suave y acotada por la curva $C$. Por lo tanto podemos ocupar el teorema de Stokes. Calculemos el rotacional
+  \begin{equation*}
+    \nabla \times F = \curl{-y^{3}}{x^{3}}{-z^{3}} = (0, 0, 3x^{2} + 3y^{2})
+  \end{equation*}
+
+  Consideremos la siguiente parametrizacion de la superficie
+  \begin{equation*}
+    F(x, y) = (x, y, 1 - x - y)
+  \end{equation*}
+
+  Luego la normal es
+  \begin{equation*}
+    \hat{n} = (1, 1, 1)
+  \end{equation*}
+
+  Entonces por el teorema de Stokes
+  \begin{equation*}
+    \int_{C} -y^{3} dx + x^{3}dy - z^{3} dz = \iint_{S} \nabla \times F dS = \iint_{D} 3x^{2} + 3y^{2} dA = 3\int_{0}^{2\pi}\int_{0}^{1}r^{3} dr d\theta
+  \end{equation*}
+
+  Por lo tanto la solucion es
+  \begin{equation*}
+    \int_{C} -y^{3} dx + x^{3}dy - z^{3} dz = \frac{3\pi}{2}
+  \end{equation*}
+\end{solution}
+
+\begin{problem}[Precertamen MAT024 2019]
+  Sea $C$ una curva cerrada simple la cual es borde de una superficie $S$ de area $\lambda$, orientada respecto a la normal $\hat{n} = (1, 0, 1)$. Calcule el trabajo de un campo vectorial
+  $F$ cuyo rotacional es $\nabla \times F = (1, 1, 1)$ a lo largo de $C$.
+\end{problem}
+\begin{solution}
+  Se tienen todas las hipotesis del teorema de Stokes, ocuparemos este.
+  \begin{equation*}
+    \oint_{C} F dr = \iint_{S} \nabla \times F dS = 2 \iint_{D} dA = 2 \lambda
+  \end{equation*}
+\end{solution}
+
+\begin{problem}[Precertamen MAT024 2019]
+  Considere la curva $C$ definida por la interseccion de las superficies
+  \begin{equation*}
+    S_{1}: 9x^{2} + 4y^{2} = 36, S_{2} : z = 2x
+  \end{equation*}
+  y el campo $F(x, y, z) = (z \cos(y^{2}) - 2z, -2xyz \sin(y^{2}) - 2x, x \cos(y^{2}) -2y)$, encuentre el trabajo realizado por $F$ a lo largo de la curva.
+\end{problem}
+\begin{solution}
+Trivial
+\end{solution}
+
 \subsection{Teorema de la divergencia}
 Enunciamos para la completitud de este documento el teorema de la Divergencia.
 \begin{teorema}[Divergencia]
@@ -427,6 +484,120 @@ Entonces nuestra solucion es
   Dado que
   \begin{equation*}
     z \geq 0 \implies \cos(\phi) \geq 0 \implies \phi \in [0, \frac{\pi}{2}]
+  \end{equation*}
+\end{solution}
+
+\begin{problem}[Precertamen MAT024 2019]
+  Calcule el flujo del campo vectorial \begin{equation*} F(x, y, z) = (2x, z - \frac{zx}{x^{2} + y^{2} + z^{2}}, \frac{xy}{x^{2} + y^{2} + z^{2}})\end{equation*} a traves de la superficie $S$ descrita por
+  \begin{equation*}
+    S: \frac{(x - 1)^{2}}{4} + \frac{(y - 1)^{2}}{9} + (z - 2)^{2} = 1
+  \end{equation*}
+  orientada respecto a la normal unitaria exterior.
+\end{problem}
+\begin{solution}
+  Notemos que la superficie encierra un solido $V$ el cual es simple. El campo es clase $\mathcal{C}^{1}$. Por lo tanto podemos usar el teorema de la divergencia
+  \begin{equation*}
+    \iint_{S} F dS = \iiint_{V} \nabla \cdot F dV
+  \end{equation*}
+
+  Calculemos la divergencia de $F$.
+  \begin{equation*}
+    \nabla \cdot F = 2 + \frac{2zxy}{(x^{2} + y^{2} + z^{2})^{2}} - \frac{2xyz}{(x^{2} + y^{2} + z^{2})^{2}} = 2
+  \end{equation*}
+
+  Entonces tenemos
+  \begin{equation*}
+    \iint_{S} F dS = 2 \iiint_{V} dV = 16 \pi
+  \end{equation*}
+\end{solution}
+
+\begin{problem}[Precertamen MAT024 2019]
+  Considere el campo vectorial
+  \begin{equation*}
+    F(x, y, z) = (x, x(y - 1), xyz)
+  \end{equation*}
+  y la superficie $S$ definida como
+  \begin{equation*}
+    S: x^{2} + y^{2}  = 16, 0 \leq z \leq 4 - y
+  \end{equation*}
+  Calcule el flujo a traves de $S$ con respeto a la normal exterior.
+\end{problem}
+\begin{solution}
+  Consideremos la siguiente superficie $S^{\star} = S \cup S_{1} \cup S_{2}$ donde tenemos que
+  \begin{gather*}
+    S_{1}: x^{2} + y^{2} \leq 16 \land z = 0\\
+    S_{2}: x^{2} + y^{2} \leq 16 \land z = 4 - y
+  \end{gather*}
+
+  Podemos ocupar el teorema de Gauss para $S^{\star}$ pues es cerrada y encierra un solido $V$ simple. Notemos que $F \in \mathcal{C}^{1}$. Calculemos la divergencia
+  \begin{equation*}
+    \nabla \cdot F = 1 + x + xy
+  \end{equation*}
+
+  Ahora notemos que
+  \begin{equation*}
+    \iint_{S} F dS = \iiint_{V} \nabla \cdot F dV - \iint_{S_{1}} F dS - \iint_{S_{2}} F dS
+  \end{equation*}
+
+  El resto es solo calcular.
+\end{solution}
+
+\begin{problem}[Precertamen MAT024 2019]
+  Considere las superficie $S_{1}$ y $S_{2}$ definidas como
+  \begin{gather*}
+    S_{1}: x^{2} + y^{2} \leq 4, z = 1\\
+    S_{2}: x^{2} + y^{2} = 4, 1 \leq z \leq 5.
+  \end{gather*}
+
+  Determinar el flujo del campo vectorial
+  \begin{equation*}
+    F(x, y, z) = (y^{2}, x^{2}, z)
+  \end{equation*}
+  a traves de $S = S_{1} \cup S_{2}$
+\end{problem}
+\begin{solution}
+  Consideremos la siguiente superficie $S^{\star} = S \cup S_{3}$ donde
+  \begin{equation*}
+    S_{3}: x^{2} + y^{2} \leq 4, z = 5
+  \end{equation*}
+  Donde $S^{\star}$ encierra un solido $V$ simple. Calculemos la divergencia
+  \begin{equation*}
+    \nabla \cdot F = 1
+  \end{equation*}
+
+  entonces
+  \begin{equation*}
+    \iint_{S^{\star}} F dS = \iiint dV = 16 \pi
+  \end{equation*}
+
+  Por lo tanto tenemos que
+  \begin{equation*}
+    \iint_{S} F dS = 16 \pi - \iint_{S^{3}} F dS
+  \end{equation*}
+
+  Calculemos la ultima integral. Consideremos la siguiente parametrizacion
+  \begin{equation*}
+    \Phi(r, \theta) = (r \cos \theta, r \sin \theta, 5)
+  \end{equation*}
+  Por lo tanto.
+  \begin{gather*}
+    \Phi_{r} = (\cos \theta, \sin \theta, 0)\\
+    \Phi_{\theta} = (- r \sin \theta, r \cos \theta, 0)
+  \end{gather*}
+
+  entonces la normal es
+  \begin{equation*}
+    \hat{n} = \Phi_{r} \times \Phi_{\theta} = \crossprod{\cos \theta}{\sin \theta}{0}{-r \sin \theta}{r \cos \theta}{0} = (0, 0, r)
+  \end{equation*}
+
+  Por lo tanto tenemos que
+  \begin{equation*}
+    \iint_{S^{3}} (x^{2}, y^{2}, z) \cdot (0, 0, r) dS = 5 \int_{0}^{2\pi}\int_{0}^{2} r dr d \theta = 20 \pi
+  \end{equation*}
+
+  Por lo tanto la integral que buscamos es
+  \begin{equation*}
+    \iint_{S} F dS = -4 \pi
   \end{equation*}
 \end{solution}
 
@@ -731,4 +902,137 @@ Entonces nuestra solucion es
     u(x, t) = \frac{8}{\pi} \sum_{n = 1}^{\infty} \frac{1}{-4n^{2} + 4n + 3} e^{-(\lambda + 1)t} \cos(\frac{2n - 1}{2}x)
   \end{equation*}
 \end{solution}
+
+\begin{problem}[Certamen 3 2020 MAT024]
+  Resuelva mediante el metodo de separacion de variables
+  \begin{equation*}
+  \begin{dcases}
+    u_t &= u_{xx} - 6x\\
+    u(0, t) &= 3\\
+    u_{x}(2, t) &= 2\\
+    u(x, 0) &= x^{3} - 10x + 3 + 5 \sin(\frac{3\pi x}{4})
+  \end{dcases}
+  \end{equation*}
+\end{problem}
+
+\begin{solution}
+  Supondremos que la solucion es de la siguiente forma, donde $v(x, y)$ es solucion a un problema
+  homogeneo y $\phi(x)$ es una solucion particular
+  \begin{equation*}
+  u(x, t) = v(x, t) + \phi(x)
+  \end{equation*}
+
+  Reemplazando obtenemos lo siguiente
+  \begin{equation*}
+    u_{t} = u_{xx} - 6x \implies v_{t} = v_{xx} + \phi''(x) - 6x \implies \phi''(x) = 6x
+  \end{equation*}
+  Pues supusimos que $v(x, t)$ es solucion a la EDP homogenea que viene dada por $v_{t} = v_{xx}$.
+
+  De las condiciones de borde obtenemos
+  \begin{gather*}
+    u(0, t) = 3 \implies v(0, t) + \phi(0) = 3 \implies \phi(0) = 3\\
+    u_{x}(2, t) = 2 \implies v_{x}(2, t) + \phi'(2) = 2 \implies \phi'(2) = 2
+  \end{gather*}
+
+  Por lo tanto la solucion particular tiene que cumplir
+  \begin{equation*}
+    \begin{dcases}
+      \phi''(x) &= 6x\\
+      \phi(0) &= 3\\
+      \phi'(2) &= 2
+    \end{dcases}
+  \end{equation*}
+
+  Integrando 2 veces la primera ecuacion obtenemos que
+  \begin{equation*}
+    \phi(x) = x^{3} + C_{1}x + C_{2}
+  \end{equation*}
+
+  Aplicando las condiciones iniciales obtenemos que
+  \begin{equation*}
+    C_{2} = 3 \; \land \; C_{1} = -10
+  \end{equation*}
+  Por lo tanto tenemos que la solucion particular es
+  \begin{equation*}
+    \phi(x) = x^{3} - 10x + 3
+  \end{equation*}
+
+  Luego reemplazando en la condicion inical obtenemos que
+  \begin{equation*}
+    u(x, 0) = x^{3} -10x + 3 + 5\sin(\frac{3\pi x}{4}) \implies v(x, 0) = 5 \sin(\frac{3 \pi x}{4})
+  \end{equation*}
+
+  Entonces tenemos que la solucion homogenea tiene que cumplir las siguiente EDP homogenea que viene dada por
+  \begin{equation*}
+    \begin{dcases}
+      v_{t} &= v_{xx}\\
+      v(0, t) &= 0\\
+      v_{x}(2, t) &= 0\\
+      v(x, 0) &= 5 \sin(\frac{3\pi x}{4})
+    \end{dcases}
+  \end{equation*}
+
+  Por el metodo de separacion de variables tenemos que $v(x, t) = X(x)T(t)$. Resolvamos la EDP.
+  Reemplazando en la primera ecuacion
+  \begin{equation*}
+    XT' = X''T \implies \frac{T'}{T} = \frac{X''}{X} = -\lambda
+  \end{equation*}
+
+  Resolviendo la EDO en $T$ tenemos
+  \begin{equation*}
+    T' + \lambda T = 0
+  \end{equation*}
+
+  Entonces el polinomio caracteristico de la EDO es
+  \begin{equation*}
+    m + \lambda = 0 \implies m = - \lambda
+  \end{equation*}
+
+  Por lo que la solucion viene dada por
+  \begin{equation*}
+    T_{n}(t) = A_{n}e^{-\lambda_{n} t}
+  \end{equation*}
+
+  Ahora a partir de las condiciones de borde obtenemos el siguiente problema de Sturm-Liouville
+  \begin{equation*}
+    \begin{dcases}
+     X'' + \lambda X &= 0\\
+     X(0) &= 0\\
+     X'(2) &= 0
+    \end{dcases}
+  \end{equation*}
+
+  Por lo tanto la solucion viene dada por
+  \begin{gather*}
+    \lambda_{n} = ((n - \frac{1}{2}) \frac{\pi}{2})^{2}\\
+    X_{n}(x) = \sin((n - \frac12) \frac{\pi}{2} x)
+  \end{gather*}
+
+  Ahora por superposicion tenemos que la solucion formal a la EDP homogenea es
+  \begin{equation*}
+    v(x, t) = \sum_{n = 1}^{\infty} A_{n}e^{-\lambda_{n} t}\sin((n - \frac12) \frac{\pi}{2}x)
+  \end{equation*}
+
+  Aplicando la condicion incial obtenemos
+  \begin{equation*}
+      \sum_{n = 1}^{\infty} A_{n}\sin((n - \frac12) \frac{\pi}{2}x) = 5 \sin(\frac{3\pi x}{4})
+  \end{equation*}
+
+  Por ortogonalidad de la funciones propias tenemos que $A_{n} = 0$ excepto cuando
+  \begin{equation*}
+    (n - \frac{1}{2})\frac{\pi}{2} = \frac{3\pi}{4} \implies n = 2
+  \end{equation*}
+  donde $A_{2} = 5$
+
+  Por lo tanto la solucion homogenea es
+  \begin{equation*}
+    v(x, t) = 5 e^{-\lambda_{2} t}\sin(\frac{3 \pi x}{4})
+  \end{equation*}
+Entonces la solucion a nuestra EDP es
+\begin{equation*}
+  u(x, t) = v(x, t) + \phi(x) = 5 e^{-\lambda_{2} t}\sin(\frac{3 \pi x}{4}) + x^{3} - 10x + 3
+\end{equation*}
+\end{solution}
+
+
 \end{document}
