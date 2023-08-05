@@ -1,0 +1,33 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Ecuaciones no lineales}
+\begin{problem}
+  Considere la siguiente funcion
+  \begin{align*}
+    &f : [0, 1] \to \R\\
+    &x \mapsto x^{2} - 3x + 2 - e^{x}
+  \end{align*}
+  Demuestre que $f$ tiene una sola ra\'iz y aproxime su valor usando tres iteraciones del metodo de bisecci\'on.
+\end{problem}
+
+\begin{solution}
+  Notar que por algebra de funciones continuas la funcion $f$ es continua, es m\'as esta, es $\mathcal{C}^{\infty}$.
+
+  Notemos que $f(0) = 1$ y $f(1) = -e < 0$, por lo tanto dado que $f(0)\cdot f(1) = -e < 0$ por el teorema de Bolzano tenemos que existe al menos una raiz en $[0, 1]$.
+
+  Calculemos la derivada de $f$
+  \begin{equation*}
+    f'(x) = 2x - 3 - e^{x}
+  \end{equation*}
+
+  Notar que para $x \in [0,1]$ se tiene que
+  \begin{equation*}
+    2x - 3 - e^{x} \leq 2 - 3 - e = -1 - e < 0
+  \end{equation*}
+
+  y por tanto la funcion es estrictamente decreciente, por lo tantola raiz es unica.
+\end{solution}
+
+\end{document}

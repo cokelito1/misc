@@ -1,0 +1,95 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Teoria de la medida}
+\begin{problem}
+  Sea $\R$ con la algebra de Borel, si $f : \R \to \R$ es una funcion continua, entonces $f$ es medible.
+\end{problem}
+\begin{solution}
+  Sea $\alpha \in \R$, luego $(\alpha, \infty)$ es un conjunto abierto, dado que $f^{-1}((\alpha, \infty))$ es abierto, pues $f$ es continua, tenemos que $f^{-1}((\alpha, \infty)) \in B$, para todo $\alpha$, por lo tanto $f$ es medible.
+\end{solution}
+
+\begin{solution}
+Sea $x \in X \setminus (\bigcup_{A \in \mathcal{A}} A)$
+\begin{equation*}
+  x \in X \land x \notin \bigcup_{A \in \mathcal{A}} A \iff \forall A \in \mathcal{A}, x \notin A \iff \forall A \in \mathcal{A}, x \in X \setminus A \iff x \in \bigcap_{A \in \mathcal{A}} X \setminus A
+\end{equation*}
+
+Por lo tanto tenemos
+\begin{equation*}
+  X \setminus (\bigcup_{A \in \mathcal{A}} A) = \bigcap_{A \in \mathcal{A}} X \setminus A
+\end{equation*}
+\end{solution}
+
+\begin{problem}
+  Sea $|\cdot|$ la medida exterior sobre $\R$. Demuestre que si $a, b \in \R$ con $a < b$, entonces
+  \begin{equation*}
+    |(a, b)| = |[a, b)| = |(a, b]| = b - a
+  \end{equation*}
+\end{problem}
+\begin{solution}
+  Notemos que $[a, b) \subset [a, b]$ por lo que tenemos que
+  \begin{equation*}
+    |[a, b)| \leq |[a, b]| = b - a
+  \end{equation*}
+
+  Notemos tambien que $[a, b] = [a, b) \cup \{b\}$ por lo que por la $\sigma$-subaditividad tenemos que
+  \begin{equation*}
+    b - a = |[a, b]| = |[a, b) \cup \{b\}| \leq |[a, b)| + |\{b\}| = |[a, b)|
+  \end{equation*}
+
+  y por lo tanto tenemos que
+  \begin{equation*}
+    |[a, b)| = b - a
+  \end{equation*}
+
+  Analogamente para el resto con las siguientes igualdades
+  \begin{align*}
+    [a, b] &= (a, b) \cup \{a, b\}\\
+    [a, b] &= (a, b] \cup \{a\}
+  \end{align*}
+\end{solution}
+
+\begin{problem}
+Sean $A, B \subset \R$ y $|B| = 0$. Demostrar que $|A \cup B| = |A|$
+\end{problem}
+\begin{solution}
+  Notemos que $A \subset A \cup B$, entonces tenemos que
+  \begin{equation*}
+    |A| \leq |A \cup B|
+  \end{equation*}
+
+  Tambien tenemos, por la subaditividad de la medida exterior que
+  \begin{equation*}
+    |A \cup B| \leq |A| + |B| = |A|
+  \end{equation*}
+
+  Por lo tanto tenmeos que
+  \begin{equation*}
+    |A| = |A \cup B|
+  \end{equation*}
+\end{solution}
+
+\begin{problem}
+Demostrar que $|tA|$ = $|t||A|$, para $t \in \R$
+\end{problem}
+\begin{solution}
+  Si $t = 0$ entonces el resultado es trivial pues $0 \cdot A = \{0\}$ lo cual es contable por lo tanto $|0 \cdot A| = 0$.
+
+  Si $t \neq 0$ entonces, dada un cubrimiento abierto $\{I_{n}\}_{n \in \N}$ de $A$ tenemos que
+  \begin{equation*}
+    tA \subset \bigcup_{n \in \N} tI_{n}
+  \end{equation*}
+
+  Por lo que
+  \begin{equation*}
+    |tA| \leq \sum_{n \in \N} \ell(tI_{n}) = \sum_{n \in \N} |t|\ell(I_{n}) =|t| \sum_{n \in \N}\ell(I_{n})
+  \end{equation*}
+  Tomando infimo sobre los recubrimientos de $A$ obtenemos
+  \begin{equation*}
+    |tA| \leq |t||A|
+  \end{equation*}
+\end{solution}
+
+\end{document}

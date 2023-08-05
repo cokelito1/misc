@@ -2,7 +2,87 @@
 
 \begin{document}
 
+\subsection{Espacios Metricos}
+\begin{problem}[Abierto si y solo si Sequencialmente Abierto]
+    Sea $(X, d)$ un espacio metrico, un conjunto $A \subset X$ se dice sequencialmente abierto si
+    para toda sucesion $\xn$ que converge a un elemento de $A$ se tiene que
+    \begin{equation*}
+      \exists n \in \N, k > n \implies  x_{k} \in A
+    \end{equation*}
+
+    Demuestre que la nocion de abierto y secuencialmente abierto es la misma en espacios metricos.
+  \end{problem}
+\begin{solution}
+    $(\implies)$, Sea $A$ un conjunto abierto y $\xn$ una sucesion tal que
+    \begin{equation*}
+      \lim_{n \to \infty} x_{n} = \overline{x} \in A
+    \end{equation*}
+
+    Dado que $A$ es abierto existe $\varepsilon > 0$ tal que
+    \begin{equation}
+      \label{openset}
+      B_{\varepsilon}(\overline{x}) \subset A
+    \end{equation}
+
+    Por la convergencia tenemos que existe $N \in \N$ tal que si $n > N \implies x_{n} \in B_{\varepsilon}(\overline{x})$ pero tenemos por (\ref{openset}) que $x_{n} \in B_{\varepsilon}(\overline{x}) \implies x_{n} \in A$. Por lo tanto $A$ es secuencialmente abierto.
+
+    $(\Longleftarrow)$ Procederemos pro contradiccion, Supongamos que $A$ es secuencialemente abierto pero no abierto. Por lo tanto tenemos que $\exists x_{0} \in A$, tal que
+    \begin{equation}
+      \label{puntoborde}
+      \forall \varepsilon > 0, B_{\varepsilon}(x_{0}) \cap A^{c} \neq \emptyset
+    \end{equation}
+
+    Consideremos la siguiente sucesion, tomemos $x_{n} \in B_{\frac{1}{n}}(x_{0}) \cap A^{c}$, esta sucesion
+    esta bien definida por $(\ref{puntoborde})$. Se puede ver facilmente que $x_{n} \to x_{0}$. Pero he aqui la contradiccion pues $x_{n} \notin A, \forall n \in \N$ pero al suponer que $A$ es secuencialmente abierto, tenemos que existe $N \in \N$ tal que si $n > N \implies x_{n} \in A$, en particular $x_{N + 1} \in A \land x_{N + 1} \notin A$. Lo cual es una contradiccion.
+  \end{solution}
+
+\begin{problem}[Continuidad topologica es equivalente a continuidad]
+  Una de las definiciones mas importantes de continuidad es la siguiente.
+  $f: X \to Y$ se dice continua si para todo conjunto abierto $V$ de $Y$ se tiene que $f^{-1}(V)$ es un conjunto abierto en $X$.
+
+  Demostrar que la nocion de continuidad en espacios metricos es equivalente a la definida arriba.
+\end{problem}
+\begin{solution}
+  $(\implies)$ Supongamos que $f : X \to Y$ es continua en el sentido de espacios metricos. Sea $V$ un abierto en $Y$, sea $x \in f^{-1}(V)$, luego tenemos que $f(x) \in V$. Dado que $V$ es abierto existe una vecindad de radio $\varepsilon$ tal que $B_{\varepsilon}(f(x)) \subset V$, por la continuidad de $f$ tenemos que existe $\delta > 0$ tal que si $d_{X}(x, y) < \delta \implies d_{Y}(f(x), f(y)) < \varepsilon$, pero de esto ultimo tenemos que $f(y) \in B_{\varepsilon}(f(x)) \subset V$, por lo tanto $B_{\delta}(x) \subset f^{-1}(V)$, con lo que tenemos que $f^{-1}(V)$ es abierto.
+
+  $(\Longleftarrow)$ Supongamos que $f: X \to Y$ es continua en el sentido topologico. Sea $x \in X$ y $\varepsilon > 0$, luego tenemos que $B_{\varepsilon}(f(x))$ es un conjunto abierto en $Y$ por lo que $f^{-1}(B_{\varepsilon}(f(x)))$ es un conjunto abierto tal que $x$ esta contendio en el. Por lo tanto existe $\delta > 0$ tal que $B_{\delta}(x) \subset f^{-1}(B_{\varepsilon}(f(x)))$, lo que significa que
+  \begin{equation*}
+    y \in B_{\delta}(x) \implies f(y) \in B_{\varepsilon}(f(x)) \iff d_{X}(x, y) < \delta \implies d_{Y}(f(x), f(y)) < \varepsilon
+  \end{equation*}
+  Dado que $x$ y $\varepsilon$ fueron arbitrarios, se tiene que $f$ es continua en el sentido de espacios metricos.
+\end{solution}
+
+\subsection{Espacios de Banach}
+\begin{problem}
+  Demostrar que $(X, ||\cdot||)$ es una espacio de Banach si y solo si
+  \begin{equation*}
+    \sum_{n = 1}^{\infty} ||x_{n}|| < \infty \implies \sum_{n = 1}^{\infty} x_{n} = x \in X
+  \end{equation*}
+\end{problem}
+\begin{solution}
+  $(\implies)$ Sea $X$ un Banach. Supongamos que
+  \begin{equation*}
+    \sum_{n = 1}^{\infty} ||x_{n}|| < \infty
+  \end{equation*}
+  Dado que esto es una serie convergente de numeros reales, esta es cauchy. Veamos que
+  \begin{equation*}
+    \sum_{n = 1}^{\infty} x_{n}
+  \end{equation*}
+  es cauchy.
+  Sin perdida de generalidad supongamos que $m \geq n$ luego
+  \begin{equation*}
+    \lim_{n,m \to \infty} ||\sum_{k = 1}^{n} x_{k} - \sum_{k=1}^m x_{k}|| = \lim_{n,m \to \infty} ||\sum_{k = n + 1}^{m} x_{k}|| \leq \lim_{n, m \to \infty} \sum_{k = n + 1}^{m} ||x_{k}|| = 0
+  \end{equation*}
+  La ultima igualdad viene de que la series de las normas es cauchy
+\end{solution}
+
 \subsection{Topologia}
+\begin{problem}
+  De un ejemplo de un espacio topologico donde un conjunto abierto no sea secuencialmente abierto.
+\end{problem}
+\begin{solution}
+\end{solution}
+
 \begin{problem}
   Sea $(X, \topo)$ un espacio topologico tal que $B \subset X$ sea un subconjunto denso en $X$. Si
   $A$ es un conjunto denso en $(B, \topo_{B})$, donde $\topo_{B}$ es la topologia inducida de $X$ en $B$, demostrar que $A$ es denso en $(X, \topo)$
@@ -21,5 +101,46 @@
   Pero $\theta \cap B \cap A \subset \theta \cap A$, por lo tanto $\theta \cap A \neq \emptyset$.
   Lo que significa que $A$ es denso en $(X, \topo)$
 \end{solution}
+
+\begin{problem}
+  Demostrar que si $f : X \to Y$ es una funcion continua y $\xn$ es una sucesion convergente en $X$ entonces
+  \begin{equation*}
+    \lim_{n \to \infty} f(x_{n}) = f(\lim_{n \to \infty} x_{n})
+  \end{equation*}.
+\end{problem}
+\begin{solution}
+  Sea $x = \lim_{n \to \infty} x_{n}$. Sea $\nu$ una vecindad de $f(x)$, dado que $f$ es continua tenemos que el conjunto $f^{-1}(\nu)$ es abierto en $X$, dado que $\nu$ es vecindad de $f(x)$ tenemos que $x \in f^{-1}(\nu)$. Dado que $f^{-1}(\nu)$ es abierto, este es vecindad de todos sus puntos por lo que $f^{-1}(\nu)$ es vecindad de $x$, dado que $x_{n} \to x$ tenemos que existe $N \in \N$ tal que si $n > N \implies x_{n} \in f^{-1}(\nu)$ pero esto implica que
+  \begin{equation*}
+    n > N \implies f(x_{n}) \in \nu
+  \end{equation*}
+
+  Dado que $\nu$ fue arbitrario tenemos que
+  \begin{equation*}
+    \lim_{n \to \infty} f(x_{n}) = f(x)
+  \end{equation*}
+
+  Que es justo lo que queriamos demostrar.
+\end{solution}
+
+\begin{problem}
+  Supongamos que $X$ satisface el primer axioma de contabilidad y que se tiene que para toda
+  sucesion convergente en $X$ entonces la funcion $f: X \to Y$ cumple lo siguiente
+  \begin{equation*}
+    \lim_{n \to \infty} f(x_{n}) = f(\lim_{n \to \infty}  x_{n})
+  \end{equation*}
+  Demostrar que $f$ es continua.
+\end{problem}
+\begin{solution}
+  Procedamos por contradiccion, por lo tanto $f$ no es continua en un punto $x$. Sea $V$ una vecindad de $f(x)$
+\end{solution}
+
+\begin{problem}
+  De un ejemplo donde se tiene que para toda sucesion convergente en $X$ se tiene que la funcion $f : X \to Y$ cumple que
+  \begin{equation*}
+    \lim_{n \to \infty} f(x_{n}) = f(\lim_{n \to \infty}  x_{n})
+  \end{equation*}
+
+  pero $f$ no sea continua
+\end{problem}
 
 \end{document}

@@ -1,15 +1,11 @@
 (TeX-add-style-hook
- "MAT225"
+ "Compleja"
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-class-options
                      '(("subfiles" "../main.tex")))
    (TeX-run-style-hooks
     "latex2e"
     "subfiles"
-    "subfiles10")
-   (LaTeX-add-labels
-    "openset"
-    "puntoborde"
-    "eqn_fst1"))
+    "subfiles10"))
  :latex)
 

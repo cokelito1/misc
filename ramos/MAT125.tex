@@ -1,0 +1,102 @@
+\documentclass[../main.tex]{subfiles}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, fit}
+
+\begin{document}
+\subsection{Ayudantia 1}
+
+\begin{problem}
+  Sean $A$ y $B$ dos conjuntos y sea $X$ un conjunto con las siguientes propiedades
+  \begin{enumerate}
+    \item $A \subset X$ y $B \subset X$
+    \item Si $A \subset Y$ y $B \subset Y$ entonces $X \subset Y$
+  \end{enumerate}
+
+  Demostrar que $X = A \cup B$
+\end{problem}
+% \begin{solution}
+%   Veamos que $A \cup B \subset X$, sea $x \in A \cup B$, luego por definicion tenemos que
+%   $x \in A \cup B \iff x \in A \lor x \in B$, si $x \in A$ entonces por la propiedad (1) tenemos
+%   $x \in X$, analogamente si $x \in B$, por lo tanto tenemos que $A \cup B \subset X$.
+%
+%   Demostremos la otra contencion, es decir $X \subset A \cup B$. Notemos que $A \subset A \cup B$ y $B \subset A \cup B$, por la propiedad (2) tenemos que $X \subset A \cup B$.
+%
+%   A partir de las 2 contensiones podemos concluir que $X = A \cup B$
+% \end{solution}
+
+\begin{problem}
+Sean $A, B \subset E$. Demostrar que $A \cap B = \emptyset$ si y solamente si $A \subset B^{C}$.
+\end{problem}
+% \begin{solution}
+% Supongamos que $A \cap B = \emptyset$, veamos que $A \subset B^{C}$. Sea $x \in A$ entonces $x \notin B$ pues de otra forma $x \in A \land x \in B \implies x \in A \cap B$ lo cual no puede ser pues la interseccion es vacia, pero si $x \notin B \implies x \in B^{C}$, por lo tanto $x \in A \implies x \notin B$, es decir $x \in B^{C}$. Por lo tanto $A \subset B^{C}$. Procederemos por contradiccion, supongamos que $A \cap B \neq \emptyset$ entonces existe $x \in A \cap B$, pero esto implica que $x \in A \land x \in B$ pero como $A \subset B^{C}$ tenemos que $x \in B^{C}$ es decir $x \in B^{C} \land x \in B$ pero esto es una contradiccion pues es lo mismo que decir $x \notin B \land x \in B$. Por lo tanto $A \cap B = \emptyset \iff A \subset B^{C}$
+% \end{solution}
+
+\begin{problem}
+  Sea $f: A \to B$ una funcion, demuestre que
+  \begin{enumerate}
+    \item $X \subset f^{-1}(f(X))$, para todo $X \subset A$
+    \item $f$ es inyectiva si y solamente si $f^{-1}(f(X)) = X$ para todo $X \subset A$
+    \item De un ejemplo de una funcion donde solo se tenga la primera inclusion.
+  \end{enumerate}
+\end{problem}
+% \begin{solution}
+%   \begin{enumerate}
+%   \item Sea $X \subset A$, demostremos que $X \subset f^{-1}(f(X))$ para todo $X \subset A$. Sea $x \in X$, luego tenemos que
+%     \begin{equation*}
+%       x \in X \implies f(x) \in f(X) \implies x \in f^{-1}(f(X))
+%     \end{equation*}
+%
+%     \item Necesitamos demostrar la otra inclusion. Sea $X \subset A$ y $x \in f^{-1}(f(X))$ luego
+%           \begin{equation*}
+%             x \in f^{-1}(f(X)) \implies \exists y \in f(X), f(x) = y
+%           \end{equation*}
+%           Pero dado que $y \in f(X)$ tenemos que $\exists x_{0} \in X, f(x_{0}) = y$, por lo tanto
+%           \begin{equation*}
+%             f(x) = f(x_{0}) \implies x = x_{0}
+%           \end{equation*}
+%           dado que $x_{0} \in X \implies x \in X$, por lo tanto $f^{-1}(f(X)) \subset X$.
+%           Por lo tanto, por (1), se tiene lo pedido, i.e. $f^{-1}(f(X)) = X$
+%
+%     \item Considere la siguiente funcion
+%           \begin{align*}
+%             &f : \{0, 1\} \to \{0, 1\}\\
+%             &f(0) = 1\\
+%             &f(1) = 1
+%           \end{align*}
+%
+%           Consideremos el conjunto $X = \{1\}$ entonces tenemos que
+%           \begin{equation*}
+%             f^{-1}(f(\{1\})) = f^{-1}(\{1\}) = \{0, 1\}
+%           \end{equation*}
+%           Por lo tanto solo se tiene que $X \subset f^{-1}(f(\{1\}))$
+%   \end{enumerate}
+% \end{solution}
+
+\begin{problem}
+  Considere $f: A \to B$ y $g: B \to C$ funciones, demuestre lo siguiente
+  \begin{enumerate}
+          \item si $f$ y $g$ son funciones inyectivas entonces $g \circ f: A \to C$ es una funcion inyectiva.
+          \item si $f$ y $g$ son funciones sobreyectivas entonces $g \circ f: A \to C$ es una funcion sobreyectiva.
+          \item si $f$ y $g$ son funciones biyectivas entonces $g \circ f: A \to C$ es una funcion biyectiva.
+  \end{enumerate}
+\end{problem}
+% \begin{solution}
+%   \begin{enumerate}
+%     \item Sea $(\gof)(x) = (\gof)(y)$ entonces
+%           \begin{equation*}
+%             (\gof)(x) = (\gof)(y) \implies g(f(x)) = g(f(y)) \implies f(x) = f(y) \implies x = y
+%           \end{equation*}
+%   Por lo tanto $\gof$ es inyectiva
+%
+%     \item Sea $y \in C$ entonces existe $b \in B$ tal que $g(b) = y$, pues $g: B \to C$ es una funcion sobreyectiva, de igual forma existe $a \in A$ tal que $f(a) = b$, pues $f: A \to B$ es sobreyectiva. Por lo tanto tenemos que
+%           \begin{equation*}
+%             (\gof)(a) = g(f(a)) = g(b) = y
+%           \end{equation*}
+%     Por lo que se tiene que $\gof : A \to C$ es sobreyectiva.
+%
+%     \item Aplicacion directa de los 2 anteriores pues $f$ biyectiva si y solo si $f$ inyectiva y sobreyectiva, de igual forma para $g$.
+%   \end{enumerate}
+% \end{solution}
+
+\end{document}

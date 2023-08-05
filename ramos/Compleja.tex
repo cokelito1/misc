@@ -1,0 +1,66 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\subsection{Capitulo 1}
+\begin{problem}
+  Sea $(z_{n})_{n \in \N}$, $\lim_{n \to \infty} z = w$ si y solamente si $\lim_{n \to \infty} \Re(z_{n}) = \Re(w)$ y $\lim_{n \to \infty} \Im(z_{n}) = \Im(w)$
+\end{problem}
+\begin{solution}
+  $(\implies)$ Supongamos que $\lim_{n \to \infty} \Re(z_{n}) = \Re(w)$ y $\lim_{n \to \infty} \Im(z_{n}) = \Im(w)$, sea $\varepsilon > 0$, luego tenemos que existe $N_{1}$ tal que si $n > N_{1}$ entonces $|\Re(z_{n}) - \Re(w)| < \frac{\varepsilon}{2}$ y de manera analoga existe $N_{2}$ tal que si $n > N_{2}$ entonces $|\Im(z_{n}) - \Im(w)| < \frac{\varepsilon}{2}$. Tomemos $N = \max \{N_{1}, N_{2}\}$, luego tenemos que si $n > N$
+  \begin{equation*}
+    |z_{n} - w| = |\Re(z_{n}) + \Im(z) i - \Re(w) - \Im(w)| \leq |\Re(z_{n}) - \Re(w)| + |\Im(z_{n}) i - \Im(w)i| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+  \end{equation*}
+
+  Por lo tanto $\lim_{n \to \infty} z_{n} = w$
+\end{solution}
+
+\begin{problem}
+  Sea $\Omega \subset \C$ abierto, $\Omega$ es conexo si y solo si es arcoconexo
+\end{problem}
+\begin{solution}
+  (Arcoconexo implica conexo) Supongamos que $\Omega$ es arcoconexo y no conexo, entonces $\Omega = \Omega_{1} \cup \Omega_{2}$ tal que $\Omega_{1}, \Omega_{2}$ son abiertos y $\Omega_{1} \cap \Omega_{2} = \emptyset$.
+
+  Sea $\omega_{1} \in \Omega_{1}$ y $\omega_{2} \in \Omega_{2}$, sea $\gamma$ la curva que conecta a estos 2 puntos y $\phi : [0, 1] \to \Omega$ una parametrizacion continua de $\gamma$, consideremos el siguiente valor
+  \begin{equation*}
+    t^{*} = \sup_{t \in [0, 1]} \{t | \phi(s) \in \Omega_{1}, 0 \leq s < t\}
+  \end{equation*}
+  Notemos que $t^{*}$ esta bien definido pues el conjunto esta acotado por $1$ y es no vacio pues $\phi$ es continua y $\phi(0) \in \Omega_{1}$ donde $\Omega_{1}$ es abierto, por lo tanto esta bien definido.
+
+  \begin{enumerate}
+    \item Supongamos que $\phi(t^{*}) \in \Omega_{1}$, luego dado que $\Omega_{1}$ es abierto existe $\varepsilon > 0$ tal que $B_{\varepsilon}(\phi(t^{*})) \subset \Omega_{1}$, por la continuidad de $\phi$ tenemos que $\phi^{-1}(B_{\varepsilon}(\phi(t^{*})))$ es abierto, dado que $t^{*}$.
+  \end{enumerate}
+\end{solution}
+
+\begin{problem}
+  Sea $\C^{*}$ el grupo multiplicativo de los numeros complejos, es decir
+  \begin{equation*}
+    \C^{*} = \C \setminus \{0\}
+  \end{equation*}
+  Demuestre que
+  \begin{equation*}
+    \C^{*^{2}} = \C^{*}
+  \end{equation*}
+
+  Donde
+  \begin{equation*}
+    \C^{*^{2}} = \{z \in \C^{*} : z = \omega^{2}, \omega \in \C\}
+  \end{equation*}
+\end{equation*}
+\end{problem}
+
+\begin{problem}
+  Encuentre todas las soluciones en $\C$ a la ecuacion
+  \begin{equation*}
+    z^{3} = 1
+  \end{equation*}
+  donde $z \in \C$
+\end{problem}
+
+\begin{problem}
+  Se define la siguiente funcion
+  \begin{equation*}
+
+    \
+\end{problem}
+
+\end{document}

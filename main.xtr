@@ -1,0 +1,4 @@
+\begin{XTRproblem}
+  Sea $(X, \topo)$ un espacio topologico tal que $B \subset X$ sea un subconjunto denso en $X$. Si
+  $A$ es un conjunto denso en $(B, \topo_{B})$, donde $\topo_{B}$ es la topologia inducida de $X$ en $B$, demostrar que $A$ es denso en $(X, \topo)$
+\end{XTRproblem}

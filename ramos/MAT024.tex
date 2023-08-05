@@ -301,9 +301,65 @@ Tenemos que la integral de superficie es
 Trivial
 \end{solution}
 
+\begin{problem}[Certamen MAT024 2023-1]
+  Use el teorema de Stokes para calcular
+  \begin{equation*}
+    \int_{C} (z^{2}, -xz - yz, z) \cdot dr
+  \end{equation*}
+  Donde $C$ es la curva definida como la interseccion del plano $x + y + z = \frac32$ con el paraboloide $z = x^{2} + y^{2}$
+\end{problem}
+\begin{solution}
+  Notemos que se cumplen todas las hipotesis de Stokes
+
+  Parametrizamos la superficie de la siguiente forma
+  \begin{equation*}
+    f(x, y) = (x, y, \frac32 - x - y)
+  \end{equation*}
+
+  Donde la normal es
+  \begin{equation*}
+    \hat{n} = (1, 1, 1)
+  \end{equation*}
+
+  Luego veamos la proyeccion sobre el plano $XY$
+  \begin{equation*}
+    \frac32 - x - y = x^{2} + y^{2} \iff \frac32 = x^{2} + x + \frac14 + y^{2} + y + \frac14 - \frac12 \iff 2 = (x + \frac12)^{2} + (y + \frac12)^{2}
+  \end{equation*}
+
+  Luego calculemos el rotor
+  \begin{equation*}
+    \nabla \times F = \curl{z^{2}}{-xz - yz}{z} = (x + y, 2z, -z)
+  \end{equation*}
+
+
+  Entonces por el teorema de Stokes tenemos
+  \begin{equation*}
+    \int_{C} F \cdot dr = \iint_{S} \nabla \times F dS
+  \end{equation*}
+
+  Entonces tenemos
+  \begin{equation*}
+    \iint_{S} (x + y, 2z, -z) \cdot (1, 1, 1) dS = \iint_{D} x + y + z dA
+  \end{equation*}
+
+  Ocupando polares para parametrizar el dominio
+  \begin{gather*}
+    x(r, \theta) = r \cos \theta - \frac12\\
+    y(r, \theta) = r \sin \theta - \frac12\\
+    z(r, \theta) = \frac52 - r \cos \theta - r \sin \theta
+  \end{gather*}
+
+  Donde el jacobiano es el jacobiano de polares, es decir $r$. Notemos que no existen mas restricciones por lo que $0 \leq \theta \leq 2\pi$ y $0 \leq r \leq \sqrt{2}$.
+  \begin{align}
+    \iint_{D} x + y + z dA &= \int_{0}^{2\pi}\int_{0}^{\sqrt2} (r \cos \theta - \frac12 + r \sin \theta - \frac12 + \frac52 - r \cos \theta - r \sin \theta)r dr d \theta\\
+                           &= \int_{0}^{2\pi}\int_{0}^{\sqrt2} \frac32 r dr d \theta\\
+                           &= 3\pi
+  \end{align}
+\end{solution}
+
 \subsection{Teorema de la divergencia}
 Enunciamos para la completitud de este documento el teorema de la Divergencia.
-\begin{teorema}[Divergencia]
+\begin{teorema}Divergencia
   Sea $V$ una region solida y simple donde $S$ es la superficie frontera de $V$, definida con orientacion positiva. Sea $F: A \subset \R^{3} \to \R^{3}$ un campo vectorial de clase $\mathcal{C}^{1}$ donde $A$ es subconjunto abierto de $\R^{3}$ que contiene a $V$. Entonces
   \begin{equation*}
     \iint_{S} F dS = \iiint_{V} \nabla \cdot F dV
@@ -598,6 +654,48 @@ Entonces nuestra solucion es
   Por lo tanto la integral que buscamos es
   \begin{equation*}
     \iint_{S} F dS = -4 \pi
+  \end{equation*}
+\end{solution}
+
+\begin{problem}[Certamen MAT024 2023-1]
+  Considere la superficie $S$ dada por $z = 1 - x^{2} - y^{2}$ con $z \geq 0$, orientada segun el vector normal que apunta hacia arriba. Use el teorema de Gauss, de forma adecuada, para calcular
+  \begin{equation*}
+    \iint_{S} (x + z, -y, \frac{z^{2}}{2} + 1) dS
+  \end{equation*}
+
+  Considere cerrar la superficie $S$ con la tapa $T_{A}$ que es la parte del palno $z = 0$ con $x^{2} + y^{2} \leq 1$
+\end{problem}
+\begin{solution}
+  Consideremos la superficie
+  \begin{equation*}
+    S^{*} = S \cup T_{A}
+  \end{equation*}
+
+  Notemos que esta superficie es cerrada. Se tienen todas las condiciones para el teorema de la divergencia por lo que
+  \begin{equation*}
+    \iint_{S^{*}} (x + z, -y, \frac{z^{2}}{2} + 1) dS = \iiint_{V} \nabla \cdot (x + z, -y, \frac{z^{2}}{2} + 1) dV
+  \end{equation*}
+
+  Al calcular la divergencia obtenemos
+  \begin{equation*}
+    \nabla \cdot F = 1 - 1 + z = z
+  \end{equation*}
+
+  parametrizemos de la siguiente forma
+  \begin{equation*}
+    \Phi(x, y) = (x, y, 1 - x^{2} - y^{2})
+  \end{equation*}
+
+  Ocupemos coordenadas cilindricas
+  \begin{align*}
+    x &= r \cos \theta\\
+    y &= r \sin \theta\\
+    z &= z
+  \end{align*}
+
+  con $\theta \in [0, 2\pi]$, $r \in [0, 1]$ y $0 \leq z \leq 1 - r^{2}$
+  \begin{equation*}
+    \iiint_{V} z dV = \int_{0}^{2\pi}\int_{0}^{1}\int_{0}^{1 - r^{2}} z dz dr d \theta = \frac{\pi}{6}
   \end{equation*}
 \end{solution}
 
@@ -914,7 +1012,6 @@ Entonces nuestra solucion es
   \end{dcases}
   \end{equation*}
 \end{problem}
-
 \begin{solution}
   Supondremos que la solucion es de la siguiente forma, donde $v(x, y)$ es solucion a un problema
   homogeneo y $\phi(x)$ es una solucion particular
@@ -1033,6 +1130,5 @@ Entonces la solucion a nuestra EDP es
   u(x, t) = v(x, t) + \phi(x) = 5 e^{-\lambda_{2} t}\sin(\frac{3 \pi x}{4}) + x^{3} - 10x + 3
 \end{equation*}
 \end{solution}
-
 
 \end{document}
