@@ -22,6 +22,35 @@ Por lo tanto tenemos
 \end{equation*}
 \end{solution}
 
+\begin{solution}
+  Sea $x \in X \setminus (\bigcap_{A \in \mathcal{A}} A)$ entonces
+  \begin{equation*}
+    x \in X \land x \notin \bigcap_{A \in \mathcal{A}} A \iff \exists A' \in \mathcal{A}, x \in X \land x \notin A' \iff x \in \exists A' \in \mathcal{A}, X \setminus A' \iff x \in \bigcup_{A \in \mathcal{A}} (X \setminus A)
+  \end{equation*}
+
+  Por lo tanto tenemos que
+  \begin{equation*}
+    X \setminus \bigcap_{A \in \mathcal{A}} A = \bigcup_{A \in \mathcal{A}} (X \setminus A)
+  \end{equation*}
+\end{solution}
+
+\begin{solution}
+  Sea $x \in f^{-1}(\bigcap_{A \in \mathcal{A}} A)$ entonces tenemos que
+  \begin{equation*}
+    \exists y \in \bigcap_{A \in \mathcal{A}} A, f(x) = y \implies \forall A \in \mathcal{A}, y \in A \implies \forall A \in \mathcal{A}, x \in f^{-1}(A) \implies x \in \bigcap_{A \in \mathcal{A}} f^{-1}(A)
+  \end{equation*}
+
+  Por lo tanto tenemos
+  \begin{equation*}
+    f^{-1}(\bigcap_{A \in \mathcal{A}} A) \subset \bigcap_{A \in \mathcal{A}} f^{-1}(A)
+  \end{equation*}
+
+  Sea $x \in \bigcap_{A \in \mathcal{A}} f^{-1}(A)$ entonces
+  \begin{equation*}
+    \forall A \in \mathcal{A}, x \in f^{-1}(A) \implies \forall A \in \mathcal{A} , f(x) \in A \implies f(x) \in \bigcap_{A \in \mathcal{A}} A \implies x \in f^{-1}(\bigcap_{A \in \mathcal{A}} f^{-1} A)
+  \end{equation*}
+\end{solution}
+
 \begin{problem}
   Sea $|\cdot|$ la medida exterior sobre $\R$. Demuestre que si $a, b \in \R$ con $a < b$, entonces
   \begin{equation*}
@@ -90,6 +119,8 @@ Demostrar que $|tA|$ = $|t||A|$, para $t \in \R$
   \begin{equation*}
     |tA| \leq |t||A|
   \end{equation*}
+
+  Si  $\I_{n}$_{n \in \N}
 \end{solution}
 
 \end{document}
